@@ -1,12 +1,14 @@
 package com.chinaex123.cobblestone_generator.block.entity;
 
 import com.chinaex123.cobblestone_generator.network.NetworkHelper;
+import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -74,7 +76,7 @@ public class CobblestoneGeneratorBlockEntity extends BlockEntity {
         }
     }
 
-    public static void tick(net.minecraft.world.level.Level level, BlockPos pos, BlockState state, CobblestoneGeneratorBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, CobblestoneGeneratorBlockEntity blockEntity) {
         if (level.isClientSide) return;
 
         blockEntity.generateTimer++;
@@ -85,7 +87,7 @@ public class CobblestoneGeneratorBlockEntity extends BlockEntity {
             int outputAmount = Math.min(blockEntity.tier.getOutputAmount(), 64);
             ItemStack cobblestone = new ItemStack(Items.COBBLESTONE, outputAmount);
 
-            // 轮询填充槽位
+            // 生成逻辑...
             for (int attempt = 0; attempt < 9; attempt++) {
                 int slotIndex = (blockEntity.lastProcessedSlot + attempt) % 9;
                 ItemStack stack = blockEntity.itemHandler.getStackInSlot(slotIndex);
@@ -105,12 +107,15 @@ public class CobblestoneGeneratorBlockEntity extends BlockEntity {
             }
         }
 
-        // 输出到上方容器
-        BlockPos abovePos = pos.above();
-        var aboveBlockEntity = level.getBlockEntity(abovePos);
-        if (aboveBlockEntity != null) {
-            var handler = level.getCapability(Capabilities.ItemHandler.BLOCK, abovePos, Direction.DOWN);
+        // 使用配置的输出方向
+        Direction outputDirection = CobblestoneGeneratorConfig.getOutputDirection();
+        BlockPos targetPos = pos.relative(outputDirection);
+
+        var targetBlockEntity = level.getBlockEntity(targetPos);
+        if (targetBlockEntity != null) {
+            var handler = level.getCapability(Capabilities.ItemHandler.BLOCK, targetPos, outputDirection.getOpposite());
             if (handler != null) {
+                // 输出逻辑
                 for (int slotAttempt = 0; slotAttempt < 9; slotAttempt++) {
                     int sourceSlot = (blockEntity.lastProcessedSlot + slotAttempt) % 9;
                     ItemStack stack = blockEntity.itemHandler.getStackInSlot(sourceSlot);

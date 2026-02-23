@@ -3,7 +3,9 @@ package com.chinaex123.cobblestone_generator;
 import com.chinaex123.cobblestone_generator.block.ModBlocks;
 import com.chinaex123.cobblestone_generator.block.entity.CobblestoneGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
 import com.chinaex123.cobblestone_generator.item.ModItems;
+import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -40,11 +42,16 @@ public class CobblestoneGenerator {
         ModItems.register(modEventBus);        // 注册物品
         ModBlockEntities.register(modEventBus); // 注册方块实体
 
+        modContainer.registerConfig(ModConfig.Type.COMMON,
+                CobblestoneGeneratorConfig.SPEC);
         // 注册能力
         modEventBus.addListener(CobblestoneGeneratorBlockEntity::registerCapabilities);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        // 配置加载完成后刷新缓存
+        event.enqueueWork(CobblestoneGeneratorConfig::onConfigReload);
+    }
 
     // 可以使用 @SubscribeEvent 并让事件总线自动发现要调用的方法
     @SubscribeEvent
