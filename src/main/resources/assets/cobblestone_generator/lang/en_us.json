@@ -1,0 +1,11 @@
+{
+  "itemGroup.cobblestone_generator_tab": "Cobblestone Generator",
+
+  "block.cobblestone_generator.stone_gen": "Stone Cobblestone Generator",
+  "block.cobblestone_generator.copper_gen": "Copper Cobblestone Generator",
+  "block.cobblestone_generator.iron_gen": "Iron Cobblestone Generator",
+  "block.cobblestone_generator.gold_gen": "Gold Cobblestone Generator",
+  "block.cobblestone_generator.diamond_gen": "Diamond Cobblestone Generator",
+  "block.cobblestone_generator.emerald_gen": "Emerald Cobblestone Generator",
+  "block.cobblestone_generator.netherite_gen": "Netherite Cobblestone Generator"
+}

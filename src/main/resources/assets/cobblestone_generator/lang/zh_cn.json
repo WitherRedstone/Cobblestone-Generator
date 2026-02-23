@@ -1,0 +1,11 @@
+{
+  "itemGroup.cobblestone_generator_tab": "圆石生成器",
+
+  "block.cobblestone_generator.stone_gen": "石圆石生成器",
+  "block.cobblestone_generator.copper_gen": "铜圆石生成器",
+  "block.cobblestone_generator.iron_gen": "铁圆石生成器",
+  "block.cobblestone_generator.gold_gen": "金圆石生成器",
+  "block.cobblestone_generator.diamond_gen": "钻石圆石生成器",
+  "block.cobblestone_generator.emerald_gen": "绿宝石圆石生成器",
+  "block.cobblestone_generator.netherite_gen": "下界合金圆石生成器"
+}
