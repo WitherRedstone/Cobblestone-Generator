@@ -32,6 +32,7 @@ public enum CobblestoneGeneratorTier {
         return CobblestoneGeneratorConfig.getOutputAmount(this);
     }
 
+    // 通过配置获取实际值
     public int getGenerationTicks() {
         return CobblestoneGeneratorConfig.getGenerationTicks(this);
     }

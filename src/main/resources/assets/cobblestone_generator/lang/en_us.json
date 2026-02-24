@@ -21,6 +21,9 @@
   "config.cobblestone_generator.generation_ticks": "Generation Ticks",
   "config.cobblestone_generator.generation_ticks.tooltip": "Generation interval (ticks):",
   "message.cobblestone_generator.config_saved": "Configuration saved!",
-  "message.cobblestone_generator.config_save_failed": "Failed to save configuration!"
+  "message.cobblestone_generator.config_save_failed": "Failed to save configuration!",
 
+  "tooltip.cobblestone_generator.output_amount": "§bOutput Amount",
+  "tooltip.cobblestone_generator.generation_time": "§eGeneration Interval",
+  "tooltip.cobblestone_generator.speed_multiplier": "§6Speed Multiplier"
 }
