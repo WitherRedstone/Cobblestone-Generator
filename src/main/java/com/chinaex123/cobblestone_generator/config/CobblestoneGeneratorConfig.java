@@ -1,32 +1,39 @@
 package com.chinaex123.cobblestone_generator.config;
 
+import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import net.neoforged.neoforge.common.ModConfigSpec.Builder;
-import net.neoforged.neoforge.common.ModConfigSpec.IntValue;
-
-import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 
 public class CobblestoneGeneratorConfig {
-    private static final Builder BUILDER = new Builder();
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    // 全局设置
+    // 全局配置
     public static final ModConfigSpec.EnumValue<Direction> OUTPUT_DIRECTION;
     public static final ModConfigSpec.BooleanValue AUTO_OUTPUT_ENABLED;
     public static final ModConfigSpec.DoubleValue SPEED_MULTIPLIER;
 
-    // 每个等级的独立配置
-    public static final ModConfigSpec.IntValue[] OUTPUT_AMOUNTS = new IntValue[CobblestoneGeneratorTier.values().length];
-    public static final ModConfigSpec.IntValue[] GENERATION_TICKS = new IntValue[CobblestoneGeneratorTier.values().length];
+    // 红石信号配置
+    public static final ModConfigSpec.EnumValue<RedstoneSignalMode> REDSTONE_SIGNAL_MODE;
+    public static final ModConfigSpec.IntValue REDSTONE_SIGNAL_INTERVAL;
+
+    // 每个等级的配置数组
+    public static final ModConfigSpec.IntValue[] OUTPUT_AMOUNTS = new ModConfigSpec.IntValue[CobblestoneGeneratorTier.values().length];
+    public static final ModConfigSpec.IntValue[] GENERATION_TICKS = new ModConfigSpec.IntValue[CobblestoneGeneratorTier.values().length];
 
     public static final ModConfigSpec SPEC;
+
+    // 红石信号模式枚举
+    public enum RedstoneSignalMode {
+        CONTINUOUS,  // 持续模式：有物品时持续保持15级信号
+        INTERVAL     // 间隔模式：按设定间隔检查并发出信号
+    }
 
     static {
         BUILDER.push("Cobblestone Generator Settings");
 
         // 全局配置
         OUTPUT_DIRECTION = BUILDER
-                .comment("设置圆石生成机的输出方向 (默认: UP)")
+                .comment("输出方向 (默认: UP)")
                 .defineEnum("outputDirection", Direction.UP);
 
         AUTO_OUTPUT_ENABLED = BUILDER
@@ -36,6 +43,19 @@ public class CobblestoneGeneratorConfig {
         SPEED_MULTIPLIER = BUILDER
                 .comment("全局速度倍数 (0.1-10.0, 默认: 1.0)")
                 .defineInRange("speedMultiplier", 1.0, 0.1, 10.0);
+
+        // 红石信号配置
+        BUILDER.push("redstone_settings");
+
+        REDSTONE_SIGNAL_MODE = BUILDER
+                .comment("红石信号模式 (CONTINUOUS: 持续15级信号, INTERVAL: 按间隔持续15级信号)")
+                .defineEnum("redstoneSignalMode", RedstoneSignalMode.CONTINUOUS);
+
+        REDSTONE_SIGNAL_INTERVAL = BUILDER
+                .comment("红石信号间隔ticks (仅在INTERVAL模式下有效, 默认: 20)")
+                .defineInRange("redstoneSignalInterval", 20, 1, 1200);
+
+        BUILDER.pop();
 
         // 每个等级的配置
         BUILDER.push("tier_settings");
@@ -75,6 +95,15 @@ public class CobblestoneGeneratorConfig {
         return SPEED_MULTIPLIER != null ? SPEED_MULTIPLIER.get() : 1.0;
     }
 
+    // 红石信号配置获取方法
+    public static RedstoneSignalMode getRedstoneSignalMode() {
+        return REDSTONE_SIGNAL_MODE != null ? REDSTONE_SIGNAL_MODE.get() : RedstoneSignalMode.CONTINUOUS;
+    }
+
+    public static int getRedstoneSignalInterval() {
+        return REDSTONE_SIGNAL_INTERVAL != null ? REDSTONE_SIGNAL_INTERVAL.get() : 20;
+    }
+
     // 等级配置获取方法
     public static int getOutputAmount(CobblestoneGeneratorTier tier) {
         int index = tier.ordinal();
@@ -92,14 +121,8 @@ public class CobblestoneGeneratorConfig {
         return tier.getDefaultGenerationTicks();
     }
 
-    // 配置重载回调方法
     public static void onConfigReload() {
         // 添加配置重载时需要执行的逻辑
         System.out.println("Cobblestone Generator config reloaded");
-    }
-
-    // 注册方法
-    public static void registerConfig(net.neoforged.fml.ModContainer container) {
-        container.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, SPEC);
     }
 }

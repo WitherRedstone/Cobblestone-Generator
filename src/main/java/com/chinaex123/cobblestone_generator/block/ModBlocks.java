@@ -88,11 +88,14 @@ public class ModBlocks {
     // 红石圆石生成器
     public static final DeferredBlock<Block> REDSTONE_COBBLEGEN = registerBlocks("redstone_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.STONE)
+                    .mapColor(MapColor.COLOR_RED)
                     .sound(SoundType.STONE)
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
-                    .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.REDSTONE));
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> 3)
+                    .isRedstoneConductor((state, level, pos) -> true), // 允许红石传导
+                    CobblestoneGeneratorTier.REDSTONE));
 
 
     /**

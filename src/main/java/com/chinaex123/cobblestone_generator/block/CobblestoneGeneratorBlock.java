@@ -3,27 +3,52 @@ package com.chinaex123.cobblestone_generator.block;
 import com.chinaex123.cobblestone_generator.block.entity.CobblestoneGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.Nullable;
 
 public class CobblestoneGeneratorBlock extends BaseEntityBlock {
+    public static final IntegerProperty POWER = BlockStateProperties.POWER;
     private final CobblestoneGeneratorTier tier;
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return simpleCodec(properties -> new CobblestoneGeneratorBlock(properties, CobblestoneGeneratorTier.STONE));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(POWER); // 添加红石信号属性
+        super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    public boolean isSignalSource(BlockState state) {
+        // 红石等级的方块可以作为信号源
+        return true;
+    }
+
+    @Override
+    public int getSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
+        // 返回红石信号强度
+        return blockState.getValue(POWER);
     }
 
     public CobblestoneGeneratorBlock(Properties properties, CobblestoneGeneratorTier tier) {
