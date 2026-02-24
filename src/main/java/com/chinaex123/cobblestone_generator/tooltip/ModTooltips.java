@@ -28,9 +28,6 @@ public class ModTooltips {
             List<Component> tooltip = event.getToolTip();
             CobblestoneGeneratorTier tier = generatorBlock.getTier();
 
-            // 添加分割线
-            tooltip.add(Component.literal(""));
-
             // 获取配置的数值
             int outputAmount = CobblestoneGeneratorConfig.getOutputAmount(tier);
             int generationTicks = CobblestoneGeneratorConfig.getGenerationTicks(tier);
@@ -55,6 +52,35 @@ public class ModTooltips {
             if (Math.abs(speedMultiplier - 1.0) > 0.01) {
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.speed_multiplier")
                         .append(": " + String.format("%.1fx", speedMultiplier)));
+            }
+
+            // 为红石等级添加特殊tooltip
+            if (tier == CobblestoneGeneratorTier.REDSTONE) {
+                tooltip.add(Component.literal(""));
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_description"));
+
+                // 显示红石信号模式
+                CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.getRedstoneSignalMode();
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_mode")
+                        .append(": ").append(Component.translatable("redstone_signal_mode." + signalMode.name().toLowerCase())));
+
+                // 如果是INTERVAL模式，显示间隔tick
+                if (signalMode == CobblestoneGeneratorConfig.RedstoneSignalMode.INTERVAL) {
+                    int interval = CobblestoneGeneratorConfig.getRedstoneSignalInterval();
+                    tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_interval")
+                            .append(": " + interval + " tick"));
+                }
+            }
+
+            // 为紫水晶等级添加特殊tooltip
+            if (tier == CobblestoneGeneratorTier.AMETHYST) {
+                tooltip.add(Component.literal(""));
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.amethyst_description"));
+
+                // 显示紫水晶加速倍数
+                double growthMultiplier = CobblestoneGeneratorConfig.getAmethystGrowthSpeedMultiplier();
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.amethyst_growth_boost")
+                        .append(": " + String.format("%.1f", growthMultiplier) + "x"));
             }
         }
     }

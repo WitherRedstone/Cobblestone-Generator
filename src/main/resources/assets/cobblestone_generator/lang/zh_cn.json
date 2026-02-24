@@ -27,5 +27,14 @@
 
   "tooltip.cobblestone_generator.output_amount": "§b产出数量",
   "tooltip.cobblestone_generator.generation_time": "§e生成间隔",
-  "tooltip.cobblestone_generator.speed_multiplier": "§6速度倍数"
+  "tooltip.cobblestone_generator.speed_multiplier": "§6速度倍数",
+
+  "tooltip.cobblestone_generator.amethyst_description": "§d§l特殊功能§7：§6加速附近的紫水晶母岩生长",
+  "tooltip.cobblestone_generator.amethyst_growth_boost": "§e紫水晶生长加速",
+
+  "tooltip.cobblestone_generator.redstone_description": "§d§l特殊功能§7：§6输出红石信号",
+  "tooltip.cobblestone_generator.redstone_mode": "§e红石模式",
+  "tooltip.cobblestone_generator.redstone_interval": "§e信号间隔",
+  "redstone_signal_mode.continuous": "§e持续",
+  "redstone_signal_mode.interval": "§e间隔"
 }

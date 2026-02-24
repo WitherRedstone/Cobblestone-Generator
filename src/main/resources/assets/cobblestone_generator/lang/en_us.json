@@ -27,5 +27,14 @@
 
   "tooltip.cobblestone_generator.output_amount": "§bOutput Amount",
   "tooltip.cobblestone_generator.generation_time": "§eGeneration Interval",
-  "tooltip.cobblestone_generator.speed_multiplier": "§6Speed Multiplier"
+  "tooltip.cobblestone_generator.speed_multiplier": "§6Speed Multiplier",
+
+  "tooltip.cobblestone_generator.amethyst_description": "§d§lSpecial Features§7: §6Accelerates nearby amethyst budding blocks",
+  "tooltip.cobblestone_generator.amethyst_growth_boost": "§6Amethyst Growth Boost",
+
+  "tooltip.cobblestone_generator.redstone_description": "§d§lSpecial Features§7: §6Redstone Output",
+  "tooltip.cobblestone_generator.redstone_mode": "§eRedstone Mode",
+  "tooltip.cobblestone_generator.redstone_interval": "§eSignal Interval",
+  "redstone_signal_mode.continuous": "§eContinuous",
+  "redstone_signal_mode.interval": "§eInterval"
 }

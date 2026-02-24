@@ -11,8 +11,7 @@ public class CobblestoneGeneratorConfig {
     public static final ModConfigSpec.EnumValue<Direction> OUTPUT_DIRECTION;
     public static final ModConfigSpec.BooleanValue AUTO_OUTPUT_ENABLED;
     public static final ModConfigSpec.DoubleValue SPEED_MULTIPLIER;
-
-    // 红石信号配置
+    public static final ModConfigSpec.DoubleValue AMETHYST_GROWTH_SPEED_MULTIPLIER;
     public static final ModConfigSpec.EnumValue<RedstoneSignalMode> REDSTONE_SIGNAL_MODE;
     public static final ModConfigSpec.IntValue REDSTONE_SIGNAL_INTERVAL;
 
@@ -29,35 +28,39 @@ public class CobblestoneGeneratorConfig {
     }
 
     static {
-        BUILDER.push("Cobblestone Generator Settings");
-
         // 全局配置
+        BUILDER.push("Cobblestone Generator Settings");
         OUTPUT_DIRECTION = BUILDER
                 .comment("输出方向 (默认: UP)")
                 .defineEnum("outputDirection", Direction.UP);
-
         AUTO_OUTPUT_ENABLED = BUILDER
                 .comment("是否启用自动输出功能 (默认: true)")
                 .define("autoOutputEnabled", true);
-
         SPEED_MULTIPLIER = BUILDER
                 .comment("全局速度倍数 (0.1-10.0, 默认: 1.0)")
                 .defineInRange("speedMultiplier", 1.0, 0.1, 10.0);
+        BUILDER.push("amethyst_settings");
 
-        // 红石信号配置
+        // 紫水晶圆石生成器配置
+        BUILDER.push("amethyst_settings");
+        AMETHYST_GROWTH_SPEED_MULTIPLIER = BUILDER
+                .comment("紫水晶母岩生长速度倍数 (默认: 2.0)")
+                .defineInRange("amethystGrowthSpeedMultiplier", 2.0, 1.0, 10.0);
+        BUILDER.pop();
+
+
+        // 红石圆石生成器-红石信号配置
         BUILDER.push("redstone_settings");
-
         REDSTONE_SIGNAL_MODE = BUILDER
                 .comment("红石信号模式 (CONTINUOUS: 持续15级信号, INTERVAL: 按间隔持续15级信号)")
                 .defineEnum("redstoneSignalMode", RedstoneSignalMode.CONTINUOUS);
-
         REDSTONE_SIGNAL_INTERVAL = BUILDER
                 .comment("红石信号间隔ticks (仅在INTERVAL模式下有效, 默认: 20)")
                 .defineInRange("redstoneSignalInterval", 20, 1, 1200);
-
         BUILDER.pop();
 
-        // 每个等级的配置
+
+        // 每个等级的圆石生成器配置
         BUILDER.push("tier_settings");
         CobblestoneGeneratorTier[] tiers = CobblestoneGeneratorTier.values();
         for (int i = 0; i < tiers.length; i++) {
@@ -65,15 +68,12 @@ public class CobblestoneGeneratorConfig {
             String tierName = tier.name().toLowerCase();
 
             BUILDER.push(tierName);
-
             OUTPUT_AMOUNTS[i] = BUILDER
                     .comment("每次输出数量 (默认: " + tier.getDefaultOutputAmount() + ")")
                     .defineInRange("outputAmount", tier.getDefaultOutputAmount(), 1, 1024);
-
             GENERATION_TICKS[i] = BUILDER
                     .comment("生成间隔ticks (默认: " + tier.getDefaultGenerationTicks() + ")")
                     .defineInRange("generationTicks", tier.getDefaultGenerationTicks(), 1, 2400);
-
             BUILDER.pop();
         }
         BUILDER.pop();
@@ -102,6 +102,10 @@ public class CobblestoneGeneratorConfig {
 
     public static int getRedstoneSignalInterval() {
         return REDSTONE_SIGNAL_INTERVAL != null ? REDSTONE_SIGNAL_INTERVAL.get() : 20;
+    }
+
+    public static double getAmethystGrowthSpeedMultiplier() {
+        return AMETHYST_GROWTH_SPEED_MULTIPLIER != null ? AMETHYST_GROWTH_SPEED_MULTIPLIER.get() : 2.0;
     }
 
     // 等级配置获取方法

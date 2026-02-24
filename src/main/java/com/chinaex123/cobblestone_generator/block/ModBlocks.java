@@ -93,7 +93,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops()
-                    .lightLevel(state -> 3)
+                    .lightLevel(state -> 9)
                     .isRedstoneConductor((state, level, pos) -> true), // 允许红石传导
                     CobblestoneGeneratorTier.REDSTONE));
 
