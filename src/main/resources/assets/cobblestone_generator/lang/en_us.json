@@ -8,6 +8,8 @@
   "block.cobblestone_generator.diamond_cobblegen": "Diamond Cobblestone Generator",
   "block.cobblestone_generator.emerald_cobblegen": "Emerald Cobblestone Generator",
   "block.cobblestone_generator.netherite_cobblegen": "Netherite Cobblestone Generator",
+  "block.cobblestone_generator.amethyst_cobblegen": "Amethyst Cobblestone Generator",
+  "block.cobblestone_generator.redstone_cobblegen": "Redstone Cobblestone Generator",
   "cobblestone_generator.config.title": "Cobblestone Generator Configuration",
   "screen.cobblestone_generator.config.title": "Cobblestone Generator Config",
   "config.cobblestone_generator.output_direction": "Output Direction",

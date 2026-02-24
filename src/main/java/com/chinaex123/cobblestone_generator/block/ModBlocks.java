@@ -19,7 +19,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCK_REGISTER =
             DeferredRegister.createBlocks(CobblestoneGenerator.MOD_ID);
 
-
+    // 石圆石生成器
     public static final DeferredBlock<Block> STONE_COBBLEGEN = registerBlocks("stone_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
@@ -27,7 +27,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.STONE));
-
+    // 铜圆石生成器
     public static final DeferredBlock<Block> COPPER_COBBLEGEN = registerBlocks("copper_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE)
@@ -35,7 +35,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.COPPER));
-
+    // 铁圆石生成器
     public static final DeferredBlock<Block> IRON_COBBLEGEN = registerBlocks("iron_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
@@ -43,7 +43,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.IRON));
-
+    // 金圆石生成器
     public static final DeferredBlock<Block> GOLD_COBBLEGEN = registerBlocks("gold_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GOLD)
@@ -51,7 +51,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.GOLD));
-
+    // 钻石圆石生成器
     public static final DeferredBlock<Block> DIAMOND_COBBLEGEN = registerBlocks("diamond_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIAMOND)
@@ -59,7 +59,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.DIAMOND));
-
+    // 绿宝石圆石生成器
     public static final DeferredBlock<Block> EMERALD_COBBLEGEN = registerBlocks("emerald_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.EMERALD)
@@ -67,7 +67,7 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.EMERALD));
-
+    // 下界合金圆石生成器
     public static final DeferredBlock<Block> NETHERITE_COBBLEGEN = registerBlocks("netherite_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BLACK)
@@ -75,6 +75,24 @@ public class ModBlocks {
                     .strength(3.0f, 6.0f)
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.NETHERITE));
+
+    // ================================== 特殊圆石生成器 ==================================
+    // 紫水晶圆石生成器
+    public static final DeferredBlock<Block> AMETHYST_COBBLEGEN = registerBlocks("amethyst_cobblegen",
+            () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.AMETHYST_CLUSTER)
+                    .strength(3.0f, 6.0f)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.AMETHYST));
+    // 红石圆石生成器
+    public static final DeferredBlock<Block> REDSTONE_COBBLEGEN = registerBlocks("redstone_cobblegen",
+            () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.STONE)
+                    .strength(3.0f, 6.0f)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.REDSTONE));
 
 
     /**

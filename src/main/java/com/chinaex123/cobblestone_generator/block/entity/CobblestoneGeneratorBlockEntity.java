@@ -90,7 +90,6 @@ public class CobblestoneGeneratorBlockEntity extends BlockEntity {
             int outputAmount = Math.min(blockEntity.tier.getOutputAmount(), 64);
             ItemStack cobblestone = new ItemStack(Items.COBBLESTONE, outputAmount);
 
-            // ... 现有的生成逻辑保持不变
             for (int attempt = 0; attempt < 9; attempt++) {
                 int slotIndex = (blockEntity.lastProcessedSlot + attempt) % 9;
                 ItemStack stack = blockEntity.itemHandler.getStackInSlot(slotIndex);

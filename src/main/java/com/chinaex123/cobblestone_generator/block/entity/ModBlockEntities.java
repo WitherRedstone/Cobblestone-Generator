@@ -22,7 +22,9 @@ public class ModBlockEntities {
                             ModBlocks.GOLD_COBBLEGEN.get(),
                             ModBlocks.DIAMOND_COBBLEGEN.get(),
                             ModBlocks.EMERALD_COBBLEGEN.get(),
-                            ModBlocks.NETHERITE_COBBLEGEN.get()
+                            ModBlocks.NETHERITE_COBBLEGEN.get(),
+                            ModBlocks.AMETHYST_COBBLEGEN.get(),
+                            ModBlocks.REDSTONE_COBBLEGEN.get()
                     ).build(null));
 
     public static void register(IEventBus bus){

@@ -30,6 +30,8 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DIAMOND_COBBLEGEN.get());
         dropSelf(ModBlocks.EMERALD_COBBLEGEN.get());
         dropSelf(ModBlocks.NETHERITE_COBBLEGEN.get());
+        dropSelf(ModBlocks.AMETHYST_COBBLEGEN.get());
+        dropSelf(ModBlocks.REDSTONE_COBBLEGEN.get());
     }
 
 

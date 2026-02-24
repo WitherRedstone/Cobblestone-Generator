@@ -8,6 +8,8 @@
   "block.cobblestone_generator.diamond_cobblegen": "钻石圆石生成器",
   "block.cobblestone_generator.emerald_cobblegen": "绿宝石圆石生成器",
   "block.cobblestone_generator.netherite_cobblegen": "下界合金圆石生成器",
+  "block.cobblestone_generator.amethyst_cobblegen": "紫水晶圆石生成器",
+  "block.cobblestone_generator.redstone_cobblegen": "红石圆石生成器",
   "cobblestone_generator.config.title": "圆石生成器配置",
   "screen.cobblestone_generator.config.title": "圆石生成机配置",
   "config.cobblestone_generator.output_direction": "输出方向",

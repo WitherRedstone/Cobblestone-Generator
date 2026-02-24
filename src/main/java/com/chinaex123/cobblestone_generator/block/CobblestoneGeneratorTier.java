@@ -9,7 +9,10 @@ public enum CobblestoneGeneratorTier {
     GOLD(32, 15),
     DIAMOND(64, 10),
     EMERALD(128, 5),
-    NETHERITE(256, 1);
+    NETHERITE(256, 1),
+
+    AMETHYST(256, 20),
+    REDSTONE(64, 20);
 
     private final int defaultOutputAmount;
     private final int defaultGenerationTicks;

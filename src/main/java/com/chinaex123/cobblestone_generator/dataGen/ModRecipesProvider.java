@@ -94,5 +94,25 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlocks("has_netherite_cobblegen", has(ModBlocks.NETHERITE_COBBLEGEN.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(CobblestoneGenerator.MOD_ID, "netherite_cobblegen"));
 
+        // 紫水晶原石刷石机
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        ModBlocks.AMETHYST_COBBLEGEN.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModBlocks.EMERALD_COBBLEGEN)
+                .define('B', Tags.Items.GEMS_AMETHYST)
+                .unlockedBy("has_amethyst_cobblegen", has(ModBlocks.AMETHYST_COBBLEGEN))
+                .save(recipeOutput);
+        // 红石原石刷石机
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        ModBlocks.REDSTONE_COBBLEGEN.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('B', Tags.Items.DUSTS_REDSTONE)
+                .unlockedBy("has_redstong_cobblegen", has(ModBlocks.REDSTONE_COBBLEGEN))
+                .save(recipeOutput);
     }
 }

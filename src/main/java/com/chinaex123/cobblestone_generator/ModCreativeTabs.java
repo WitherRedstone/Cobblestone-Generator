@@ -28,6 +28,9 @@ public class ModCreativeTabs {
                         output.accept(ModBlocks.EMERALD_COBBLEGEN.get());
                         output.accept(ModBlocks.NETHERITE_COBBLEGEN.get());
 
+                        output.accept(ModBlocks.AMETHYST_COBBLEGEN.get());
+                        output.accept(ModBlocks.REDSTONE_COBBLEGEN.get());
+
                     })
                     .build());
 
