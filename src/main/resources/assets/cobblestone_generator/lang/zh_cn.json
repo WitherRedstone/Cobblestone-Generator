@@ -1,11 +1,25 @@
 {
   "itemGroup.cobblestone_generator_tab": "圆石生成器",
 
-  "block.cobblestone_generator.stone_gen": "石圆石生成器",
-  "block.cobblestone_generator.copper_gen": "铜圆石生成器",
-  "block.cobblestone_generator.iron_gen": "铁圆石生成器",
-  "block.cobblestone_generator.gold_gen": "金圆石生成器",
-  "block.cobblestone_generator.diamond_gen": "钻石圆石生成器",
-  "block.cobblestone_generator.emerald_gen": "绿宝石圆石生成器",
-  "block.cobblestone_generator.netherite_gen": "下界合金圆石生成器"
+  "block.cobblestone_generator.stone_cobblegen": "石圆石生成器",
+  "block.cobblestone_generator.copper_cobblegen": "铜圆石生成器",
+  "block.cobblestone_generator.iron_cobblegen": "铁圆石生成器",
+  "block.cobblestone_generator.gold_cobblegen": "金圆石生成器",
+  "block.cobblestone_generator.diamond_cobblegen": "钻石圆石生成器",
+  "block.cobblestone_generator.emerald_cobblegen": "绿宝石圆石生成器",
+  "block.cobblestone_generator.netherite_cobblegen": "下界合金圆石生成器",
+  "cobblestone_generator.config.title": "圆石生成器配置",
+  "screen.cobblestone_generator.config.title": "圆石生成机配置",
+  "config.cobblestone_generator.output_direction": "输出方向",
+  "config.cobblestone_generator.output_direction.tooltip": "设置输出方向:",
+  "config.cobblestone_generator.auto_output_enabled": "自动输出",
+  "config.cobblestone_generator.auto_output_enabled.tooltip": "启用自动输出:",
+  "config.cobblestone_generator.speed_multiplier": "速度倍数",
+  "config.cobblestone_generator.speed_multiplier.tooltip": "全局速度倍数",
+  "config.cobblestone_generator.output_amount": "输出数量",
+  "config.cobblestone_generator.output_amount.tooltip": "每次输出数量:",
+  "config.cobblestone_generator.generation_ticks": "生成间隔",
+  "config.cobblestone_generator.generation_ticks.tooltip": "生成间隔(ticks):",
+  "message.cobblestone_generator.config_saved": "配置已保存！",
+  "message.cobblestone_generator.config_save_failed": "配置保存失败！"
 }

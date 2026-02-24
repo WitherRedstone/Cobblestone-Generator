@@ -1,11 +1,26 @@
 {
   "itemGroup.cobblestone_generator_tab": "Cobblestone Generator",
 
-  "block.cobblestone_generator.stone_gen": "Stone Cobblestone Generator",
-  "block.cobblestone_generator.copper_gen": "Copper Cobblestone Generator",
-  "block.cobblestone_generator.iron_gen": "Iron Cobblestone Generator",
-  "block.cobblestone_generator.gold_gen": "Gold Cobblestone Generator",
-  "block.cobblestone_generator.diamond_gen": "Diamond Cobblestone Generator",
-  "block.cobblestone_generator.emerald_gen": "Emerald Cobblestone Generator",
-  "block.cobblestone_generator.netherite_gen": "Netherite Cobblestone Generator"
+  "block.cobblestone_generator.stone_cobblegen": "Stone Cobblestone Generator",
+  "block.cobblestone_generator.copper_cobblegen": "Copper Cobblestone Generator",
+  "block.cobblestone_generator.iron_cobblegen": "Iron Cobblestone Generator",
+  "block.cobblestone_generator.gold_cobblegen": "Gold Cobblestone Generator",
+  "block.cobblestone_generator.diamond_cobblegen": "Diamond Cobblestone Generator",
+  "block.cobblestone_generator.emerald_cobblegen": "Emerald Cobblestone Generator",
+  "block.cobblestone_generator.netherite_cobblegen": "Netherite Cobblestone Generator",
+  "cobblestone_generator.config.title": "Cobblestone Generator Configuration",
+  "screen.cobblestone_generator.config.title": "Cobblestone Generator Config",
+  "config.cobblestone_generator.output_direction": "Output Direction",
+  "config.cobblestone_generator.output_direction.tooltip": "Set output direction:",
+  "config.cobblestone_generator.auto_output_enabled": "Auto Output",
+  "config.cobblestone_generator.auto_output_enabled.tooltip": "Enable auto output:",
+  "config.cobblestone_generator.speed_multiplier": "Speed Multiplier",
+  "config.cobblestone_generator.speed_multiplier.tooltip": "Global speed multiplier",
+  "config.cobblestone_generator.output_amount": "Output Amount",
+  "config.cobblestone_generator.output_amount.tooltip": "Output amount per cycle:",
+  "config.cobblestone_generator.generation_ticks": "Generation Ticks",
+  "config.cobblestone_generator.generation_ticks.tooltip": "Generation interval (ticks):",
+  "message.cobblestone_generator.config_saved": "Configuration saved!",
+  "message.cobblestone_generator.config_save_failed": "Failed to save configuration!"
+
 }

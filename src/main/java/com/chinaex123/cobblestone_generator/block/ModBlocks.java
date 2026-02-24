@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.createBlocks(CobblestoneGenerator.MOD_ID);
 
 
-    public static final DeferredBlock<Block> STONE_GEN = registerBlocks("stone_gen",
+    public static final DeferredBlock<Block> STONE_COBBLEGEN = registerBlocks("stone_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .sound(SoundType.STONE)
@@ -28,7 +28,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.STONE));
 
-    public static final DeferredBlock<Block> COPPER_GEN = registerBlocks("copper_gen",
+    public static final DeferredBlock<Block> COPPER_COBBLEGEN = registerBlocks("copper_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE)
                     .sound(SoundType.STONE)
@@ -36,7 +36,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.COPPER));
 
-    public static final DeferredBlock<Block> IRON_GEN = registerBlocks("iron_gen",
+    public static final DeferredBlock<Block> IRON_COBBLEGEN = registerBlocks("iron_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .sound(SoundType.STONE)
@@ -44,7 +44,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.IRON));
 
-    public static final DeferredBlock<Block> GOLD_GEN = registerBlocks("gold_gen",
+    public static final DeferredBlock<Block> GOLD_COBBLEGEN = registerBlocks("gold_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GOLD)
                     .sound(SoundType.STONE)
@@ -52,7 +52,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.GOLD));
 
-    public static final DeferredBlock<Block> DIAMOND_GEN = registerBlocks("diamond_gen",
+    public static final DeferredBlock<Block> DIAMOND_COBBLEGEN = registerBlocks("diamond_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIAMOND)
                     .sound(SoundType.STONE)
@@ -60,7 +60,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.DIAMOND));
 
-    public static final DeferredBlock<Block> EMERALD_GEN = registerBlocks("emerald_gen",
+    public static final DeferredBlock<Block> EMERALD_COBBLEGEN = registerBlocks("emerald_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.EMERALD)
                     .sound(SoundType.STONE)
@@ -68,7 +68,7 @@ public class ModBlocks {
                     .noOcclusion()
                     .requiresCorrectToolForDrops(), CobblestoneGeneratorTier.EMERALD));
 
-    public static final DeferredBlock<Block> NETHERITE_GEN = registerBlocks("netherite_gen",
+    public static final DeferredBlock<Block> NETHERITE_COBBLEGEN = registerBlocks("netherite_cobblegen",
             () -> new CobblestoneGeneratorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BLACK)
                     .sound(SoundType.STONE)

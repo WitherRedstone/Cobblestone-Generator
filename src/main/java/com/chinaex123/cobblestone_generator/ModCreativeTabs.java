@@ -16,17 +16,17 @@ public class ModCreativeTabs {
 
     public static final Supplier<CreativeModeTab> COBBLESTONE_GENERATOR_TAB =
             CREATIVE_MODE_TAB.register("cobblestone_generator_tab", () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModBlocks.STONE_GEN.get()))
+                    .icon(() -> new ItemStack(ModBlocks.STONE_COBBLEGEN.get()))
                     .title(Component.translatable("itemGroup.cobblestone_generator_tab"))
                     .displayItems((parameters, output) -> {
 
-                        output.accept(ModBlocks.STONE_GEN.get());
-                        output.accept(ModBlocks.COPPER_GEN.get());
-                        output.accept(ModBlocks.IRON_GEN.get());
-                        output.accept(ModBlocks.GOLD_GEN.get());
-                        output.accept(ModBlocks.DIAMOND_GEN.get());
-                        output.accept(ModBlocks.EMERALD_GEN.get());
-                        output.accept(ModBlocks.NETHERITE_GEN.get());
+                        output.accept(ModBlocks.STONE_COBBLEGEN.get());
+                        output.accept(ModBlocks.COPPER_COBBLEGEN.get());
+                        output.accept(ModBlocks.IRON_COBBLEGEN.get());
+                        output.accept(ModBlocks.GOLD_COBBLEGEN.get());
+                        output.accept(ModBlocks.DIAMOND_COBBLEGEN.get());
+                        output.accept(ModBlocks.EMERALD_COBBLEGEN.get());
+                        output.accept(ModBlocks.NETHERITE_COBBLEGEN.get());
 
                     })
                     .build());

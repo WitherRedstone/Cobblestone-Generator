@@ -33,17 +33,16 @@ public class CobblestoneGenerator {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
 
-        // 注册网络数据包处理器
-        //modEventBus.addListener(ShippingBoxNetworking::register);
-
         ModCreativeTabs.register(modEventBus); // 创造模式物品栏
 
         ModBlocks.register(modEventBus);      // 注册方块
         ModItems.register(modEventBus);        // 注册物品
         ModBlockEntities.register(modEventBus); // 注册方块实体
 
+        // 注册服务端配置
         modContainer.registerConfig(ModConfig.Type.COMMON,
                 CobblestoneGeneratorConfig.SPEC);
+
         // 注册能力
         modEventBus.addListener(CobblestoneGeneratorBlockEntity::registerCapabilities);
     }

@@ -1,7 +1,9 @@
 package com.chinaex123.cobblestone_generator.block.entity;
 
-import com.chinaex123.cobblestone_generator.network.NetworkHelper;
+import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
+import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.network.NetworkHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -15,9 +17,6 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
-
-import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
-import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 
 public class CobblestoneGeneratorBlockEntity extends BlockEntity {
     private final CobblestoneGeneratorTier tier;
@@ -81,13 +80,17 @@ public class CobblestoneGeneratorBlockEntity extends BlockEntity {
 
         blockEntity.generateTimer++;
 
-        if (blockEntity.generateTimer >= blockEntity.tier.getGenerationTicks()) {
+        // 应用速度倍数配置
+        double speedMultiplier = CobblestoneGeneratorConfig.getSpeedMultiplier();
+        int effectiveGenerationTicks = (int) Math.max(1, blockEntity.tier.getGenerationTicks() / speedMultiplier);
+
+        if (blockEntity.generateTimer >= effectiveGenerationTicks) {
             blockEntity.generateTimer = 0;
 
             int outputAmount = Math.min(blockEntity.tier.getOutputAmount(), 64);
             ItemStack cobblestone = new ItemStack(Items.COBBLESTONE, outputAmount);
 
-            // 生成逻辑...
+            // ... 现有的生成逻辑保持不变
             for (int attempt = 0; attempt < 9; attempt++) {
                 int slotIndex = (blockEntity.lastProcessedSlot + attempt) % 9;
                 ItemStack stack = blockEntity.itemHandler.getStackInSlot(slotIndex);

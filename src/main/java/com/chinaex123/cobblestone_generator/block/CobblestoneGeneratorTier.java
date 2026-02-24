@@ -1,5 +1,7 @@
 package com.chinaex123.cobblestone_generator.block;
 
+import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+
 public enum CobblestoneGeneratorTier {
     STONE(4, 60),
     COPPER(8, 40),
@@ -9,19 +11,28 @@ public enum CobblestoneGeneratorTier {
     EMERALD(128, 5),
     NETHERITE(256, 1);
 
-    private final int outputAmount;
-    private final int generationTicks;
+    private final int defaultOutputAmount;
+    private final int defaultGenerationTicks;
 
-    CobblestoneGeneratorTier(int outputAmount, int generationTicks) {
-        this.outputAmount = outputAmount;
-        this.generationTicks = generationTicks;
+    CobblestoneGeneratorTier(int defaultOutputAmount, int defaultGenerationTicks) {
+        this.defaultOutputAmount = defaultOutputAmount;
+        this.defaultGenerationTicks = defaultGenerationTicks;
     }
 
+    public int getDefaultOutputAmount() {
+        return defaultOutputAmount;
+    }
+
+    public int getDefaultGenerationTicks() {
+        return defaultGenerationTicks;
+    }
+
+    // 通过配置获取实际值
     public int getOutputAmount() {
-        return outputAmount;
+        return CobblestoneGeneratorConfig.getOutputAmount(this);
     }
 
     public int getGenerationTicks() {
-        return generationTicks;
+        return CobblestoneGeneratorConfig.getGenerationTicks(this);
     }
 }

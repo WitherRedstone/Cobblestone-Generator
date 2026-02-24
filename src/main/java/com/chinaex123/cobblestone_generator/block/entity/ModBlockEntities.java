@@ -16,13 +16,13 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<CobblestoneGeneratorBlockEntity>> COBBLE_GENERATOR =
             BLOCK_ENTITIES.register("cobble_generator",
                     () -> BlockEntityType.Builder.of(CobblestoneGeneratorBlockEntity::new,
-                            ModBlocks.STONE_GEN.get(),
-                            ModBlocks.COPPER_GEN.get(),
-                            ModBlocks.IRON_GEN.get(),
-                            ModBlocks.GOLD_GEN.get(),
-                            ModBlocks.DIAMOND_GEN.get(),
-                            ModBlocks.EMERALD_GEN.get(),
-                            ModBlocks.NETHERITE_GEN.get()
+                            ModBlocks.STONE_COBBLEGEN.get(),
+                            ModBlocks.COPPER_COBBLEGEN.get(),
+                            ModBlocks.IRON_COBBLEGEN.get(),
+                            ModBlocks.GOLD_COBBLEGEN.get(),
+                            ModBlocks.DIAMOND_COBBLEGEN.get(),
+                            ModBlocks.EMERALD_COBBLEGEN.get(),
+                            ModBlocks.NETHERITE_COBBLEGEN.get()
                     ).build(null));
 
     public static void register(IEventBus bus){
