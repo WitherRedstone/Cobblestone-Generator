@@ -41,7 +41,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.GOLD_COBBLEGEN.get())
                 .add(ModBlocks.DIAMOND_COBBLEGEN.get())
                 .add(ModBlocks.EMERALD_COBBLEGEN.get())
-                .add(ModBlocks.NETHERITE_COBBLEGEN.get());
+                .add(ModBlocks.NETHERITE_COBBLEGEN.get())
+                .add(ModBlocks.AMETHYST_COBBLEGEN.get())
+                .add(ModBlocks.REDSTONE_COBBLEGEN.get())
+                .add(ModBlocks.GLOWSTONE_COBBLEGEN.get())
+                .add(ModBlocks.HAYBLOCK_COBBLEGEN.get())
+                .add(ModBlocks.SCULK_COBBLEGEN.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.COPPER_COBBLEGEN.get());
@@ -49,7 +54,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.IRON_COBBLEGEN.get())
                 .add(ModBlocks.GOLD_COBBLEGEN.get())
                 .add(ModBlocks.AMETHYST_COBBLEGEN.get())
-                .add(ModBlocks.REDSTONE_COBBLEGEN.get());
+                .add(ModBlocks.REDSTONE_COBBLEGEN.get())
+                .add(ModBlocks.GLOWSTONE_COBBLEGEN.get())
+                .add(ModBlocks.HAYBLOCK_COBBLEGEN.get())
+                .add(ModBlocks.SCULK_COBBLEGEN.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DIAMOND_COBBLEGEN.get())
                 .add(ModBlocks.EMERALD_COBBLEGEN.get())

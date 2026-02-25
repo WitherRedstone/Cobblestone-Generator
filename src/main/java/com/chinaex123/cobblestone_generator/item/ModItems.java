@@ -4,8 +4,6 @@ import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.List;
-
 public class ModItems {
     public static final DeferredRegister.Items ITEMS_REGISTER =
             DeferredRegister.createItems(CobblestoneGenerator.MOD_ID);

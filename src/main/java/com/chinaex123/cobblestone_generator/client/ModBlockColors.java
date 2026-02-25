@@ -12,6 +12,12 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 @EventBusSubscriber(modid = CobblestoneGenerator.MOD_ID, value = Dist.CLIENT)
 public class ModBlockColors {
 
+    /**
+     * 注册方块颜色处理器，为圆石生成器方块提供基于生物群系的水颜色渲染。
+     * 该方法在颜色处理器注册事件中被调用，为所有生成器方块设置水纹理的颜色处理逻辑。
+     *
+     * @param event 方块颜色处理器注册事件对象
+     */
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         BlockColor waterColorHandler = (state, getter, pos, tintIndex) -> {
@@ -42,7 +48,10 @@ public class ModBlockColors {
                 ModBlocks.DIAMOND_COBBLEGEN.get(),
                 ModBlocks.NETHERITE_COBBLEGEN.get(),
                 ModBlocks.AMETHYST_COBBLEGEN.get(),
-                ModBlocks.REDSTONE_COBBLEGEN.get()
+                ModBlocks.REDSTONE_COBBLEGEN.get(),
+                ModBlocks.GLOWSTONE_COBBLEGEN.get(),
+                ModBlocks.HAYBLOCK_COBBLEGEN.get(),
+                ModBlocks.SCULK_COBBLEGEN.get()
         );
     }
 

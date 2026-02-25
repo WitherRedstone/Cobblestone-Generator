@@ -30,6 +30,9 @@ public class ModCreativeTabs {
 
                         output.accept(ModBlocks.AMETHYST_COBBLEGEN.get());
                         output.accept(ModBlocks.REDSTONE_COBBLEGEN.get());
+                        output.accept(ModBlocks.GLOWSTONE_COBBLEGEN.get());
+                        output.accept(ModBlocks.HAYBLOCK_COBBLEGEN.get());
+                        output.accept(ModBlocks.SCULK_COBBLEGEN.get());
 
                     })
                     .build());

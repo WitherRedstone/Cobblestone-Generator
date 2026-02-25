@@ -29,7 +29,7 @@ public class ModTooltips {
             CobblestoneGeneratorTier tier = generatorBlock.getTier();
 
             // 获取配置的数值
-            int outputAmount = CobblestoneGeneratorConfig.getOutputAmount(tier);
+            int outputCount = CobblestoneGeneratorConfig.getOutputCount(tier);
             int generationTicks = CobblestoneGeneratorConfig.getGenerationTicks(tier);
             double speedMultiplier = CobblestoneGeneratorConfig.getSpeedMultiplier();
 
@@ -41,8 +41,8 @@ public class ModTooltips {
             String cobblestoneName = cobblestoneStack.getHoverName().getString();
 
             // 显示生成数量
-            tooltip.add(Component.translatable("tooltip.cobblestone_generator.output_amount")
-                    .append(": " + outputAmount + " " + cobblestoneName));
+            tooltip.add(Component.translatable("tooltip.cobblestone_generator.output_count")
+                    .append(": " + outputCount + " " + cobblestoneName));
 
             // 显示tick间隔
             tooltip.add(Component.translatable("tooltip.cobblestone_generator.generation_time")
@@ -81,6 +81,35 @@ public class ModTooltips {
                 double growthMultiplier = CobblestoneGeneratorConfig.getAmethystGrowthSpeedMultiplier();
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.amethyst_growth_boost")
                         .append(": " + String.format("%.1f", growthMultiplier) + "x"));
+            }
+
+            // 为荧石等级添加特殊tooltip
+            if (tier == CobblestoneGeneratorTier.GLOWSTONE) {
+                tooltip.add(Component.literal(""));
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.glowstone_description"));
+            }
+
+            // 为干草块等级添加特殊tooltip
+            if (tier == CobblestoneGeneratorTier.HAYBLOCK) {
+                tooltip.add(Component.literal(""));
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.hayblock_description"));
+            }
+
+            // 为幽匿等级添加特殊tooltip
+            if (tier == CobblestoneGeneratorTier.SCULK) {
+                tooltip.add(Component.literal(""));
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_description"));
+
+                // 显示转换范围
+                int radius = CobblestoneGeneratorConfig.getSculkConversionRadius();
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_radius")
+                        .append(": " + radius + " ")
+                        .append(Component.translatable("tooltip.cobblestone_generator.blocks")));
+
+                // 显示转换概率
+                int chance = CobblestoneGeneratorConfig.getSculkConversionChance();
+                tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_chance")
+                        .append(": " + chance + "%"));
             }
         }
     }

@@ -13,7 +13,15 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class AmethystCobblegen {
 
+    /**
+     * 处理紫水晶圆石生成器的特殊功能。
+     * 该方法定期扫描生成器周围3x3x3区域内的紫水晶母岩，并有一定概率加速其生长。
+     *
+     * @param level 当前世界对象
+     * @param generatorPos 紫水晶圆石生成器的位置
+     */
     public static void handleAmethystFunction(Level level, BlockPos generatorPos) {
+        // 每40游戏刻执行一次，控制执行频率
         if (level.getGameTime() % 40 != 0) return;
 
         // 3x3x3区域检测（包括自身位置，共27个位置）
@@ -40,6 +48,14 @@ public class AmethystCobblegen {
         }
     }
 
+    /**
+     * 推进紫水晶母岩的生长过程。
+     * 该方法检查母岩六个面的相邻方块，要么生成新的紫水晶芽，要么推进现有芽的生长阶段。
+     *
+     * @param level 当前世界对象
+     * @param pos 紫水晶母岩的位置
+     * @param buddingState 紫水晶母岩的方块状态
+     */
     private static void advanceAmethystGrowth(Level level, BlockPos pos, BlockState buddingState) {
         // 仍然是检查6个面，但检测范围扩大了
         for (Direction direction : Direction.values()) {
@@ -78,6 +94,14 @@ public class AmethystCobblegen {
         }
     }
 
+    /**
+     * 在指定位置创建新的紫水晶芽。
+     * 该方法根据母岩面朝向创建相应朝向的小型紫水晶芽，并播放放置音效。
+     *
+     * @param level 当前世界对象
+     * @param motherPos 紫水晶母岩的位置
+     * @param face 母岩的面朝向，决定芽的生成位置和朝向
+     */
     private static void createNewAmethystBud(Level level, BlockPos motherPos, Direction face) {
         BlockPos budPos = motherPos.relative(face);
 
@@ -92,6 +116,13 @@ public class AmethystCobblegen {
         }
     }
 
+    /**
+     * 获取紫水晶生长的下一个阶段方块。
+     * 该方法根据当前紫水晶芽的阶段，返回进化后的下一阶段方块类型。
+     *
+     * @param currentStage 当前紫水晶芽的方块类型
+     * @return 下一阶段的紫水晶方块类型，如果已是最终阶段则返回原方块
+     */
     private static Block getNextAmethystStage(Block currentStage) {
         if (currentStage == Blocks.SMALL_AMETHYST_BUD) {
             return Blocks.MEDIUM_AMETHYST_BUD;

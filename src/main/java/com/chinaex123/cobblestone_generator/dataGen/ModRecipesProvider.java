@@ -97,22 +97,56 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         // 紫水晶原石刷石机
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
                         ModBlocks.AMETHYST_COBBLEGEN.get())
-                .pattern("BBB")
+                .pattern("CBC")
                 .pattern("BAB")
-                .pattern("BBB")
+                .pattern("CBC")
                 .define('A', ModBlocks.EMERALD_COBBLEGEN)
                 .define('B', Tags.Items.GEMS_AMETHYST)
+                .define('C', Items.AMETHYST_BLOCK)
                 .unlockedBy("has_amethyst_cobblegen", has(ModBlocks.AMETHYST_COBBLEGEN))
                 .save(recipeOutput);
         // 红石原石刷石机
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
                         ModBlocks.REDSTONE_COBBLEGEN.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('B', Tags.Items.DUSTS_REDSTONE)
+                .define('C', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                .unlockedBy("has_redstone_cobblegen", has(ModBlocks.REDSTONE_COBBLEGEN))
+                .save(recipeOutput);
+        // 荧石原石刷石机
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        ModBlocks.GLOWSTONE_COBBLEGEN.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('B', Tags.Items.DUSTS_GLOWSTONE)
+                .define('C', Items.GLOWSTONE)
+                .unlockedBy("has_glowstone_cobblegen", has(ModBlocks.GLOWSTONE_COBBLEGEN))
+                .save(recipeOutput);
+        // 干草块原石刷石机
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        ModBlocks.HAYBLOCK_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
                 .define('A', ModBlocks.GOLD_COBBLEGEN)
-                .define('B', Tags.Items.DUSTS_REDSTONE)
-                .unlockedBy("has_redstong_cobblegen", has(ModBlocks.REDSTONE_COBBLEGEN))
+                .define('B', Items.HAY_BLOCK)
+                .unlockedBy("has_hayblock_cobblegen", has(ModBlocks.HAYBLOCK_COBBLEGEN))
+                .save(recipeOutput);
+        // 幽匿原石刷石机
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        ModBlocks.SCULK_COBBLEGEN.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModBlocks.DIAMOND_COBBLEGEN)
+                .define('B', Items.ECHO_SHARD)
+                .define('C', Items.SCULK)
+                .unlockedBy("has_sculk_cobblegen", has(ModBlocks.SCULK_COBBLEGEN))
                 .save(recipeOutput);
     }
 }

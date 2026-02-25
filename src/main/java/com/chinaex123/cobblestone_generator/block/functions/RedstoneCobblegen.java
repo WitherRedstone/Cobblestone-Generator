@@ -1,7 +1,8 @@
 package com.chinaex123.cobblestone_generator.block.functions;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
-import com.chinaex123.cobblestone_generator.block.entity.CobblestoneGeneratorBlockEntity;
+import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
+import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -10,13 +11,15 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RedstoneCobblegen {
 
     /**
-     * 处理红石圆石生成器的信号逻辑
-     * @param level 世界对象
-     * @param pos 方块位置
-     * @param state 方块状态
-     * @param blockEntity 方块实体
+     * 处理红石圆石生成器的信号输出逻辑。
+     * 根据配置的红石信号模式（持续或间隔），控制方块的红石信号强度。
+     *
+     * @param level 当前世界对象
+     * @param pos 红石圆石生成器的位置
+     * @param state 红石圆石生成器的方块状态
+     * @param blockEntity 红石圆石生成器的方块实体
      */
-    public static void handleRedstoneSignal(Level level, BlockPos pos, BlockState state, CobblestoneGeneratorBlockEntity blockEntity) {
+    public static void handleRedstoneSignal(Level level, BlockPos pos, BlockState state, SpecialGeneratorBlockEntity blockEntity) {
         if (level.isClientSide) return;
 
         CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.getRedstoneSignalMode();
@@ -60,7 +63,7 @@ public class RedstoneCobblegen {
      * @param blockEntity 方块实体
      * @return 是否有圆石
      */
-    public static boolean hasCobblestoneInInventory(CobblestoneGeneratorBlockEntity blockEntity) {
+    public static boolean hasCobblestoneInInventory(NormalGeneratorBlockEntity blockEntity) {
         for (int i = 0; i < 9; i++) {
             var stack = blockEntity.getItemHandler().getStackInSlot(i);
             if (!stack.isEmpty() && stack.getItem() == net.minecraft.world.item.Items.COBBLESTONE) {

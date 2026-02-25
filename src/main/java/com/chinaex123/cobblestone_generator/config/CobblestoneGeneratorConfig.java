@@ -4,6 +4,9 @@ import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CobblestoneGeneratorConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
@@ -14,9 +17,16 @@ public class CobblestoneGeneratorConfig {
     public static final ModConfigSpec.DoubleValue AMETHYST_GROWTH_SPEED_MULTIPLIER;
     public static final ModConfigSpec.EnumValue<RedstoneSignalMode> REDSTONE_SIGNAL_MODE;
     public static final ModConfigSpec.IntValue REDSTONE_SIGNAL_INTERVAL;
+    public static final ModConfigSpec.DoubleValue HAYBLOCK_HEAL_RANGE;
+    public static final ModConfigSpec.IntValue HAYBLOCK_REGENERATION_LEVEL;
+    public static final ModConfigSpec.IntValue HAYBLOCK_REGENERATION_DURATION;
+    public static final ModConfigSpec.ConfigValue<String> SCULK_TARGET_BLOCKS_STRING;
+    public static final ModConfigSpec.IntValue SCULK_CONVERSION_RADIUS;
+    public static final ModConfigSpec.IntValue SCULK_CONVERSION_CHANCE;
+
 
     // 每个等级的配置数组
-    public static final ModConfigSpec.IntValue[] OUTPUT_AMOUNTS = new ModConfigSpec.IntValue[CobblestoneGeneratorTier.values().length];
+    public static final ModConfigSpec.IntValue[] OUTPUT_COUNTS = new ModConfigSpec.IntValue[CobblestoneGeneratorTier.values().length];
     public static final ModConfigSpec.IntValue[] GENERATION_TICKS = new ModConfigSpec.IntValue[CobblestoneGeneratorTier.values().length];
 
     public static final ModConfigSpec SPEC;
@@ -29,7 +39,7 @@ public class CobblestoneGeneratorConfig {
 
     static {
         // 全局配置
-        BUILDER.push("Cobblestone Generator Settings");
+        BUILDER.push("全局配置");
         OUTPUT_DIRECTION = BUILDER
                 .comment("输出方向 (默认: UP)")
                 .defineEnum("outputDirection", Direction.UP);
@@ -39,18 +49,18 @@ public class CobblestoneGeneratorConfig {
         SPEED_MULTIPLIER = BUILDER
                 .comment("全局速度倍数 (0.1-10.0, 默认: 1.0)")
                 .defineInRange("speedMultiplier", 1.0, 0.1, 10.0);
-        BUILDER.push("amethyst_settings");
+        BUILDER.pop();
 
-        // 紫水晶圆石生成器配置
-        BUILDER.push("amethyst_settings");
+        // 每个的圆石生成器配置
+        BUILDER.push("圆石生成器配置");
+
+        BUILDER.push("紫水晶圆石生成器功能配置");
         AMETHYST_GROWTH_SPEED_MULTIPLIER = BUILDER
                 .comment("紫水晶母岩生长速度倍数 (默认: 2.0)")
                 .defineInRange("amethystGrowthSpeedMultiplier", 2.0, 1.0, 10.0);
         BUILDER.pop();
 
-
-        // 红石圆石生成器-红石信号配置
-        BUILDER.push("redstone_settings");
+        BUILDER.push("红石圆石生成器功能配置");
         REDSTONE_SIGNAL_MODE = BUILDER
                 .comment("红石信号模式 (CONTINUOUS: 持续15级信号, INTERVAL: 按间隔持续15级信号)")
                 .defineEnum("redstoneSignalMode", RedstoneSignalMode.CONTINUOUS);
@@ -59,24 +69,44 @@ public class CobblestoneGeneratorConfig {
                 .defineInRange("redstoneSignalInterval", 20, 1, 1200);
         BUILDER.pop();
 
+        BUILDER.push("干草块圆石生成器功能配置");
+        HAYBLOCK_HEAL_RANGE = BUILDER
+                .comment("治疗范围(距方块几格) (默认: 1.0)")
+                .defineInRange("hayblockHealRange", 1.0, 1.0, 32.0);
+        HAYBLOCK_REGENERATION_LEVEL = BUILDER  // 新增配置
+                .comment("生命恢复药水等级 (默认: 0 表示I级)")
+                .defineInRange("hayblockRegenerationLevel", 0, 0, 255);
+        HAYBLOCK_REGENERATION_DURATION = BUILDER  // 新增配置
+                .comment("生命恢复药水持续时间(ticks) (默认: 60 = 3秒)")
+                .defineInRange("hayblockRegenerationDuration", 60, 20, 1200);
+        BUILDER.pop();
 
-        // 每个等级的圆石生成器配置
-        BUILDER.push("tier_settings");
+        BUILDER.push("幽匿圆石生成器功能配置");
+        SCULK_TARGET_BLOCKS_STRING = BUILDER
+                .comment("可转换为目标方块的列表，用逗号分隔 (支持方块ID和tag)")
+                .define("sculkTargetBlocks", "minecraft:moss_block");
+        SCULK_CONVERSION_RADIUS = BUILDER
+                .comment("转换半径 (默认: 3)")
+                .defineInRange("sculkConversionRadius", 3, 1, 8);
+        SCULK_CONVERSION_CHANCE = BUILDER
+                .comment("转换概率 (1-100, 默认: 10)")
+                .defineInRange("sculkConversionChance", 10, 1, 100);
+        BUILDER.pop();
+
         CobblestoneGeneratorTier[] tiers = CobblestoneGeneratorTier.values();
         for (int i = 0; i < tiers.length; i++) {
             CobblestoneGeneratorTier tier = tiers[i];
             String tierName = tier.name().toLowerCase();
 
             BUILDER.push(tierName);
-            OUTPUT_AMOUNTS[i] = BUILDER
-                    .comment("每次输出数量 (默认: " + tier.getDefaultOutputAmount() + ")")
-                    .defineInRange("outputAmount", tier.getDefaultOutputAmount(), 1, 1024);
+            OUTPUT_COUNTS[i] = BUILDER
+                    .comment("每次输出数量 (默认: " + tier.getDefaultOutputCount() + ")")
+                    .defineInRange("outputCount", tier.getDefaultOutputCount(), 1, 10240);
             GENERATION_TICKS[i] = BUILDER
-                    .comment("生成间隔ticks (默认: " + tier.getDefaultGenerationTicks() + ")")
-                    .defineInRange("generationTicks", tier.getDefaultGenerationTicks(), 1, 2400);
+                    .comment("生成间隔ticks (默认: " + tier.getDefaultOutputTicks() + ")")
+                    .defineInRange("generationTicks", tier.getDefaultOutputTicks(), 1, 1200);
             BUILDER.pop();
         }
-        BUILDER.pop();
 
         BUILDER.pop();
         SPEC = BUILDER.build();
@@ -85,10 +115,6 @@ public class CobblestoneGeneratorConfig {
     // 全局配置获取方法
     public static Direction getOutputDirection() {
         return OUTPUT_DIRECTION != null ? OUTPUT_DIRECTION.get() : Direction.UP;
-    }
-
-    public static boolean isAutoOutputEnabled() {
-        return AUTO_OUTPUT_ENABLED != null ? AUTO_OUTPUT_ENABLED.get() : true;
     }
 
     public static double getSpeedMultiplier() {
@@ -109,12 +135,12 @@ public class CobblestoneGeneratorConfig {
     }
 
     // 等级配置获取方法
-    public static int getOutputAmount(CobblestoneGeneratorTier tier) {
+    public static int getOutputCount(CobblestoneGeneratorTier tier) {
         int index = tier.ordinal();
-        if (index < OUTPUT_AMOUNTS.length && OUTPUT_AMOUNTS[index] != null) {
-            return OUTPUT_AMOUNTS[index].get();
+        if (index < OUTPUT_COUNTS.length && OUTPUT_COUNTS[index] != null) {
+            return OUTPUT_COUNTS[index].get();
         }
-        return tier.getDefaultOutputAmount();
+        return tier.getDefaultOutputCount();
     }
 
     public static int getGenerationTicks(CobblestoneGeneratorTier tier) {
@@ -122,7 +148,28 @@ public class CobblestoneGeneratorConfig {
         if (index < GENERATION_TICKS.length && GENERATION_TICKS[index] != null) {
             return GENERATION_TICKS[index].get();
         }
-        return tier.getDefaultGenerationTicks();
+        return tier.getDefaultOutputTicks();
+    }
+
+    public static double getHayblockHealRange() {
+        return HAYBLOCK_HEAL_RANGE != null ? HAYBLOCK_HEAL_RANGE.get() : 1.0;
+    }
+
+    // 幽匿配置获取方法
+    public static List<String> getSculkTargetBlocks() {
+        if (SCULK_TARGET_BLOCKS_STRING != null) {
+            String raw = SCULK_TARGET_BLOCKS_STRING.get();
+            return Arrays.asList(raw.split(","));
+        }
+        return Arrays.asList("minecraft:stone", "minecraft:cobblestone", "#minecraft:base_stone_overworld");
+    }
+
+    public static int getSculkConversionRadius() {
+        return SCULK_CONVERSION_RADIUS != null ? SCULK_CONVERSION_RADIUS.get() : 3;
+    }
+
+    public static int getSculkConversionChance() {
+        return SCULK_CONVERSION_CHANCE != null ? SCULK_CONVERSION_CHANCE.get() : 10;
     }
 
     public static void onConfigReload() {
