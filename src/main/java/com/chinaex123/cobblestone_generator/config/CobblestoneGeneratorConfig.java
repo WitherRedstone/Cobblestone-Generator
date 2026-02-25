@@ -126,23 +126,56 @@ public class CobblestoneGeneratorConfig {
         return REDSTONE_SIGNAL_MODE != null ? REDSTONE_SIGNAL_MODE.get() : RedstoneSignalMode.CONTINUOUS;
     }
 
+    /**
+     * 获取红石信号间隔配置值。
+     * 如果配置项未初始化，则返回默认值20。
+     *
+     * @return 红石信号间隔的tick数，用于INTERVAL模式下的信号发送间隔
+     */
     public static int getRedstoneSignalInterval() {
         return REDSTONE_SIGNAL_INTERVAL != null ? REDSTONE_SIGNAL_INTERVAL.get() : 20;
     }
 
+    /**
+     * 获取紫水晶生长速度倍数配置值。
+     * 如果配置项未初始化，则返回默认值2.0。
+     *
+     * @return 紫水晶母岩生长速度倍数，用于控制紫水晶芽的生成和进化速度
+     */
     public static double getAmethystGrowthSpeedMultiplier() {
         return AMETHYST_GROWTH_SPEED_MULTIPLIER != null ? AMETHYST_GROWTH_SPEED_MULTIPLIER.get() : 2.0;
     }
 
-    // 等级配置获取方法
+    /**
+     * 根据生成器等级获取对应的输出数量配置值。
+     * 若配置项未初始化或超出范围，则返回该等级的默认输出数量。
+     *
+     * @param tier 生成器等级枚举
+     * @return 对应的输出数量配置值或默认值
+     */
     public static int getOutputCount(CobblestoneGeneratorTier tier) {
+        // 获取枚举的序号作为数组索引
         int index = tier.ordinal();
-        if (index < OUTPUT_COUNTS.length && OUTPUT_COUNTS[index] != null) {
-            return OUTPUT_COUNTS[index].get();
+
+        // 边界检查：确保索引在数组范围内
+        if (index < OUTPUT_COUNTS.length) {
+            // 检查该索引位置是否已初始化
+            if (OUTPUT_COUNTS[index] != null) {
+                return OUTPUT_COUNTS[index].get();
+            }
         }
+
+        // 若配置项未初始化或超出范围，返回默认值
         return tier.getDefaultOutputCount();
     }
 
+    /**
+     * 根据生成器等级获取对应的生成间隔配置值。
+     * 若配置项未初始化或超出范围，则返回该等级的默认生成间隔。
+     *
+     * @param tier 生成器等级枚举
+     * @return 对应的生成间隔配置值（tick数）或默认值
+     */
     public static int getGenerationTicks(CobblestoneGeneratorTier tier) {
         int index = tier.ordinal();
         if (index < GENERATION_TICKS.length && GENERATION_TICKS[index] != null) {
@@ -151,23 +184,46 @@ public class CobblestoneGeneratorConfig {
         return tier.getDefaultOutputTicks();
     }
 
+    /**
+     * 获取干草块治疗范围的配置值。
+     * 若配置项未初始化，则返回默认值1.0。
+     *
+     * @return 干草块治疗范围（单位：方块距离）
+     */
     public static double getHayblockHealRange() {
         return HAYBLOCK_HEAL_RANGE != null ? HAYBLOCK_HEAL_RANGE.get() : 1.0;
     }
 
-    // 幽匿配置获取方法
+    /**
+     * 获取幽匿方块转换的目标方块列表配置值。
+     * 若配置项未初始化，则返回默认的目标方块列表。
+     *
+     * @return 目标方块列表，支持方块ID和标签格式（如"minecraft:stone,#minecraft:base_stone_overworld"）
+     */
     public static List<String> getSculkTargetBlocks() {
         if (SCULK_TARGET_BLOCKS_STRING != null) {
             String raw = SCULK_TARGET_BLOCKS_STRING.get();
             return Arrays.asList(raw.split(","));
         }
-        return Arrays.asList("minecraft:stone", "minecraft:cobblestone", "#minecraft:base_stone_overworld");
+        return List.of("minecraft:minecraft:moss_block");
     }
 
+    /**
+     * 获取幽匿方块转换的范围配置值。
+     * 若配置项未初始化，则返回默认值3。
+     *
+     * @return 转换范围（单位：方块距离）
+     */
     public static int getSculkConversionRadius() {
         return SCULK_CONVERSION_RADIUS != null ? SCULK_CONVERSION_RADIUS.get() : 3;
     }
 
+    /**
+     * 获取幽匿方块转换的概率配置值。
+     * 若配置项未初始化，则返回默认值10。
+     *
+     * @return 转换概率（百分比）
+     */
     public static int getSculkConversionChance() {
         return SCULK_CONVERSION_CHANCE != null ? SCULK_CONVERSION_CHANCE.get() : 10;
     }
