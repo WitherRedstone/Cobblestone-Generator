@@ -27,6 +27,13 @@ sourceSets.main.resources {
 }
 
 repositories {
+    mavenLocal()
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     // Add here additional repositories if required by some of the dependencies below.
 }
 
@@ -118,6 +125,14 @@ configurations {
 }
 
 dependencies {
+    implementation "curse.maven:sophisticated-core-618298:7723542"
+    implementation "curse.maven:sophisticated-storage-619320:7740574"
+    implementation "curse.maven:sophisticated-backpacks-422301:7726017"
+    implementation "curse.maven:jei-238222:7428957"
+    implementation "curse.maven:jade-324717:7313008"
+    implementation "curse.maven:pipez-443900:7312807"
+    implementation "curse.maven:storage-drawers-223852:7335085"
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
