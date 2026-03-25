@@ -6,7 +6,7 @@
 
 # **English**
 
-A mod that adds various types of cobblestone generators for Minecraft 1.21.1 NeoForge.
+A mod that adds various cobblestone generators to the game.
 
 ## ✨ Features
 
@@ -60,14 +60,14 @@ The following settings can be adjusted in the config file:
 
 ## 📋 Version Information
 
-- **Minecraft**: 1.21.1
+- **Minecraft**: 1.21.11
 - **Mod Loader**: NeoForge
 
 ---
 
 # **中文**
 
-一个为 Minecraft 1.21.1 NeoForge 添加多种圆石生成机的模组。
+一个为游戏添加多种圆石生成机的模组。
 
 ## ✨ 功能特性
 
@@ -121,5 +121,5 @@ The following settings can be adjusted in the config file:
 
 ## 📋 版本信息
 
-- **Minecraft**: 1.21.1
+- **Minecraft**: 1.21.11
 - **模组加载器**: NeoForge
