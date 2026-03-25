@@ -1,0 +1,5 @@
+// 1.21.1	2026-02-25T10:06:41.8618577	Tags for minecraft:block mod id cobblestone_generator
+0a49575c9c6f37ac73fb79c390748765e32a44be data/minecraft/tags/block/mineable/pickaxe.json
+f24c72dd3b096f21316ad9795b2ad0895f121738 data/minecraft/tags/block/needs_diamond_tool.json
+3700ef92f0d9651793128bb80ef7dc2e7fba8df1 data/minecraft/tags/block/needs_iron_tool.json
+750f3842479767c97ee7c5aac4362db1dcba7971 data/minecraft/tags/block/needs_stone_tool.json

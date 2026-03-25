@@ -1,0 +1,7 @@
+{
+  "values": [
+    "cobblestone_generator:diamond_cobblegen",
+    "cobblestone_generator:emerald_cobblegen",
+    "cobblestone_generator:netherite_cobblegen"
+  ]
+}
