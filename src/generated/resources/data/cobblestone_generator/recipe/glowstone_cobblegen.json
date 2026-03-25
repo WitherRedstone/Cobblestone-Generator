@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:gold_cobblegen",
+    "B": "#c:dusts/glowstone",
+    "C": "minecraft:glowstone"
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cobblestone_generator:glowstone_cobblegen"
+  }
+}

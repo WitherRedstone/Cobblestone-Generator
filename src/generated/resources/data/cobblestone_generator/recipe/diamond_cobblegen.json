@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:gold_cobblegen",
+    "B": "#c:gems/diamond"
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cobblestone_generator:diamond_cobblegen"
+  }
+}

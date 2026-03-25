@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:gold_cobblegen",
+    "B": "minecraft:hay_block"
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cobblestone_generator:hayblock_cobblegen"
+  }
+}

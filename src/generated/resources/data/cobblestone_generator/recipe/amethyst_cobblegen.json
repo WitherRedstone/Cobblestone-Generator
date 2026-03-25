@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:emerald_cobblegen",
+    "B": "#c:gems/amethyst",
+    "C": "minecraft:amethyst_block"
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cobblestone_generator:amethyst_cobblegen"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:copper_cobblegen",
+    "B": "#c:ingots/iron"
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cobblestone_generator:iron_cobblegen"
+  }
+}

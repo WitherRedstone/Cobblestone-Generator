@@ -1,13 +1,10 @@
 package com.chinaex123.cobblestone_generator.block;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.item.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -53,7 +50,7 @@ public class ModBlocks {
                             .mapColor(MapColor.STONE)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 铜圆石生成器
     public static final DeferredBlock<Block> COPPER_COBBLEGEN =
@@ -63,7 +60,7 @@ public class ModBlocks {
                             .mapColor(MapColor.COLOR_ORANGE)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 铁圆石生成器
     public static final DeferredBlock<Block> IRON_COBBLEGEN =
@@ -73,7 +70,7 @@ public class ModBlocks {
                             .mapColor(MapColor.METAL)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 金圆石生成器
     public static final DeferredBlock<Block> GOLD_COBBLEGEN =
@@ -83,7 +80,7 @@ public class ModBlocks {
                             .mapColor(MapColor.GOLD)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 钻石圆石生成器
     public static final DeferredBlock<Block> DIAMOND_COBBLEGEN =
@@ -93,7 +90,7 @@ public class ModBlocks {
                             .mapColor(MapColor.DIAMOND)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 绿宝石圆石生成器
     public static final DeferredBlock<Block> EMERALD_COBBLEGEN =
@@ -103,7 +100,7 @@ public class ModBlocks {
                             .mapColor(MapColor.EMERALD)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // 下界合金圆石生成器
     public static final DeferredBlock<Block> NETHERITE_COBBLEGEN =
@@ -113,7 +110,7 @@ public class ModBlocks {
                             .mapColor(MapColor.COLOR_BLACK)
                             .sound(SoundType.STONE)
                             .strength(3.0f, 6.0f)
-                            .noOcclusion());
+                            .noOcclusion().requiresCorrectToolForDrops());
 
     // ==================== 特殊圆石生成器 ====================
     // 紫水晶圆石生成器
