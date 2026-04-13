@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.client;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.block.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.ModBlocks;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;

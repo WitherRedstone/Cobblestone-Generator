@@ -1,7 +1,8 @@
-package com.chinaex123.cobblestone_generator.block.entity;
+package com.chinaex123.cobblestone_generator.init;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.block.ModBlocks;
+import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
+import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;

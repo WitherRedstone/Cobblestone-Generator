@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.block;
 
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
