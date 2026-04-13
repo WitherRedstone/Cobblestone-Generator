@@ -5,6 +5,7 @@ import com.chinaex123.cobblestone_generator.init.ModBlocks;
 import com.chinaex123.cobblestone_generator.block.entity.BaseGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.init.ModCreativeTabs;
 import com.chinaex123.cobblestone_generator.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
