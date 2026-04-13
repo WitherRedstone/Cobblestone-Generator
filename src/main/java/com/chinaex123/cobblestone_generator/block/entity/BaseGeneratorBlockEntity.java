@@ -3,6 +3,7 @@ package com.chinaex123.cobblestone_generator.block.entity;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.network.NetworkHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,8 +25,6 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class BaseGeneratorBlockEntity extends BlockEntity {
     protected final CobblestoneGeneratorTier tier;
