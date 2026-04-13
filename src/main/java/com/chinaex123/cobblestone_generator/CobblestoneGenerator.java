@@ -1,11 +1,12 @@
 package com.chinaex123.cobblestone_generator;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
-import com.chinaex123.cobblestone_generator.block.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.ModBlocks;
 import com.chinaex123.cobblestone_generator.block.entity.BaseGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
-import com.chinaex123.cobblestone_generator.item.ModItems;
+import com.chinaex123.cobblestone_generator.init.ModCreativeTabs;
+import com.chinaex123.cobblestone_generator.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.Level;
@@ -22,25 +23,21 @@ import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(CobblestoneGenerator.MOD_ID)
 public class CobblestoneGenerator {
-    // 在公共位置定义模组ID，供所有地方引用
     public static final String MOD_ID = "cobblestone_generator";
 
     public CobblestoneGenerator(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerRedstoneTick);
 
-        ModCreativeTabs.register(modEventBus); // 创造模式物品栏
-        ModBlocks.register(modEventBus);      // 注册方块
-        ModItems.register(modEventBus);        // 注册物品
-        ModBlockEntities.register(modEventBus); // 注册方块实体
-        // 注册服务端配置
+        ModCreativeTabs.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, CobblestoneGeneratorConfig.SPEC);
-        // 注册能力
         modEventBus.addListener(BaseGeneratorBlockEntity::registerCapabilities);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // 配置加载完成后刷新缓存
         event.enqueueWork(CobblestoneGeneratorConfig::onConfigReload);
     }
 

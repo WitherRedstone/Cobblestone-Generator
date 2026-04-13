@@ -4,6 +4,7 @@ import com.chinaex123.cobblestone_generator.block.functions.AmethystCobblegen;
 import com.chinaex123.cobblestone_generator.block.functions.HayblockCobblegen;
 import com.chinaex123.cobblestone_generator.block.functions.RedstoneCobblegen;
 import com.chinaex123.cobblestone_generator.block.functions.SculkCobblegen;
+import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;

@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.dataGen;
 
-import com.chinaex123.cobblestone_generator.block.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;

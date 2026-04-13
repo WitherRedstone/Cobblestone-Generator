@@ -1,10 +1,10 @@
-package com.chinaex123.cobblestone_generator.block;
+package com.chinaex123.cobblestone_generator.init;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
+import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

@@ -1,4 +1,4 @@
-package com.chinaex123.cobblestone_generator.item;
+package com.chinaex123.cobblestone_generator.init;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
 import net.neoforged.bus.api.IEventBus;

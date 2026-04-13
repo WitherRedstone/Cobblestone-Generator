@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.block;
 
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.block.entity.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -144,7 +144,7 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
 
-        // 提取物品逻辑...
+        // 提取物品逻辑
         for (int i = 0; i < 9; i++) {
             ItemStack stack = generatorBE.getItemHandler().getStackInSlot(i);
             if (!stack.isEmpty() && stack.getItem() == Items.COBBLESTONE) {
