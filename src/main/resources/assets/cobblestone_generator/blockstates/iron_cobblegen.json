@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cobblestone_generator:block/iron_cobblegen"
+    }
+  }
+}
