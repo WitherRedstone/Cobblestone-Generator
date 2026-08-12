@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cobblestone_generator:copper_cobblegen"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "cobblestone_generator:blocks/copper_cobblegen"
+}

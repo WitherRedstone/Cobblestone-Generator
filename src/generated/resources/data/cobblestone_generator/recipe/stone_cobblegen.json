@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "minecraft:cobblestone",
+    "B": "minecraft:stone",
+    "C": "minecraft:water_bucket",
+    "D": "minecraft:lava_bucket"
+  },
+  "pattern": [
+    "BBB",
+    "CAD",
+    "BBB"
+  ],
+  "result": {
+    "id": "cobblestone_generator:stone_cobblegen"
+  }
+}

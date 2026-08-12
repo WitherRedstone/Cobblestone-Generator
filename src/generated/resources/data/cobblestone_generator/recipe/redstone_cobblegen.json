@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "cobblestone_generator:gold_cobblegen",
+    "B": "#c:dusts/redstone",
+    "C": "#c:storage_blocks/redstone"
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "result": {
+    "id": "cobblestone_generator:redstone_cobblegen"
+  }
+}

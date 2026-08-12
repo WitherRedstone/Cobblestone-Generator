@@ -79,10 +79,10 @@ configurations {
 }
 
 dependencies {
-    implementation "curse.maven:jei-238222:8333245"
-    implementation "curse.maven:sophisticated-storage-619320:8337393"
-    implementation "curse.maven:sophisticated-backpacks-422301:8334952"
-    implementation "curse.maven:sophisticated-core-618298:8337378"
+    implementation "curse.maven:jei-238222:8625301"
+    implementation "curse.maven:sophisticated-backpacks-422301:8627811"
+    implementation "curse.maven:sophisticated-core-618298:8627783"
+    implementation "curse.maven:sophisticated-storage-619320:8604785"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

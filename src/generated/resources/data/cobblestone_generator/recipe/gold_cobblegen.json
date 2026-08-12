@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "cobblestone_generator:iron_cobblegen",
+    "B": "#c:ingots/gold"
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "id": "cobblestone_generator:gold_cobblegen"
+  }
+}
