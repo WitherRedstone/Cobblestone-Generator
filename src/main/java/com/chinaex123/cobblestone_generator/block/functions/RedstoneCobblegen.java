@@ -3,7 +3,7 @@ package com.chinaex123.cobblestone_generator.block.functions;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,8 +28,8 @@ public class RedstoneCobblegen {
     public static void handleRedstoneSignal(Level level, BlockPos pos, BlockState state, SpecialGeneratorBlockEntity blockEntity) {
         if (level.isClientSide) return;
 
-        CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.REDSTONE_SIGNAL_MODE.get();
-        int signalInterval = CobblestoneGeneratorConfig.REDSTONE_SIGNAL_INTERVAL.get();
+        CGServerConfig.RedstoneSignalMode signalMode = CGServerConfig.REDSTONE_SIGNAL_MODE.get();
+        int signalInterval = CGServerConfig.REDSTONE_SIGNAL_INTERVAL.get();
 
         switch (signalMode) {
             case CONTINUOUS:

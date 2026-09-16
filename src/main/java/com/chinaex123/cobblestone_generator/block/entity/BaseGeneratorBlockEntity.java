@@ -2,8 +2,8 @@ package com.chinaex123.cobblestone_generator.block.entity;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
-import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
+import com.chinaex123.cobblestone_generator.init.CGBlockEntities;
 import com.chinaex123.cobblestone_generator.network.NetworkHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -148,7 +148,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         generateTimer++;
 
         // 应用速度倍数配置
-        double speedMultiplier = CobblestoneGeneratorConfig.SPEED_MULTIPLIER.get();
+        double speedMultiplier = CGServerConfig.SPEED_MULTIPLIER.get();
         // 计算实际的生成间隔tick数（至少为1）
         int effectiveGenerationTicks = (int) Math.max(1, tier.getGenerationTicks() / speedMultiplier);
 
@@ -221,7 +221,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
      */
     protected void handleItemOutput() {
         // 获取配置的输出方向
-        Direction outputDirection = CobblestoneGeneratorConfig.OUTPUT_DIRECTION.get();
+        Direction outputDirection = CGServerConfig.OUTPUT_DIRECTION.get();
         // 计算目标方块的位置
         BlockPos targetPos = worldPosition.relative(outputDirection);
 
@@ -304,7 +304,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         // 为普通生成器注册物品处理能力
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.COBBLE_GENERATOR.get(),
+                CGBlockEntities.COBBLE_GENERATOR.get(),
                 (be, side) -> {
                     if (side != Direction.UP) {
                         return be.getItemHandler();
@@ -316,7 +316,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         // 为特殊生成器注册物品处理能力
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.SPECIAL_GENERATOR.get(),
+                CGBlockEntities.SPECIAL_GENERATOR.get(),
                 (be, side) -> {
                     if (side != Direction.UP) {
                         return be.getItemHandler();

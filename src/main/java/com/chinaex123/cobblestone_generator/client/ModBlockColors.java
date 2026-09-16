@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.client;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.init.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.color.block.BlockColor;
 import net.neoforged.api.distmarker.Dist;
@@ -46,18 +46,18 @@ public class ModBlockColors {
 
         // 为所有圆石生成器方块注册颜色处理器
         event.register(waterColorHandler,
-                ModBlocks.STONE_COBBLEGEN.get(),
-                ModBlocks.COPPER_COBBLEGEN.get(),
-                ModBlocks.IRON_COBBLEGEN.get(),
-                ModBlocks.GOLD_COBBLEGEN.get(),
-                ModBlocks.EMERALD_COBBLEGEN.get(),
-                ModBlocks.DIAMOND_COBBLEGEN.get(),
-                ModBlocks.NETHERITE_COBBLEGEN.get(),
-                ModBlocks.AMETHYST_COBBLEGEN.get(),
-                ModBlocks.REDSTONE_COBBLEGEN.get(),
-                ModBlocks.GLOWSTONE_COBBLEGEN.get(),
-                ModBlocks.HAYBLOCK_COBBLEGEN.get(),
-                ModBlocks.SCULK_COBBLEGEN.get()
+                CGBlocks.STONE_COBBLEGEN.get(),
+                CGBlocks.COPPER_COBBLEGEN.get(),
+                CGBlocks.IRON_COBBLEGEN.get(),
+                CGBlocks.GOLD_COBBLEGEN.get(),
+                CGBlocks.EMERALD_COBBLEGEN.get(),
+                CGBlocks.DIAMOND_COBBLEGEN.get(),
+                CGBlocks.NETHERITE_COBBLEGEN.get(),
+                CGBlocks.AMETHYST_COBBLEGEN.get(),
+                CGBlocks.REDSTONE_COBBLEGEN.get(),
+                CGBlocks.GLOWSTONE_COBBLEGEN.get(),
+                CGBlocks.HAYBLOCK_COBBLEGEN.get(),
+                CGBlocks.SCULK_COBBLEGEN.get()
         );
     }
 

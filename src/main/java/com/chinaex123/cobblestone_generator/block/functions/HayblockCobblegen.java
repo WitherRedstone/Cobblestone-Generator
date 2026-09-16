@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.block.functions;
 
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -36,7 +36,7 @@ public class HayblockCobblegen {
         }
 
         // 从配置获取治疗范围
-        double healRange = CobblestoneGeneratorConfig.HAYBLOCK_HEAL_RANGE.get();
+        double healRange = CGServerConfig.HAYBLOCK_HEAL_RANGE.get();
 
         // 扩大一点检测范围确保覆盖
         double expandedRange = healRange + 1.0;

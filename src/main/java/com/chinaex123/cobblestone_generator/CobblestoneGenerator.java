@@ -1,12 +1,12 @@
 package com.chinaex123.cobblestone_generator;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
-import com.chinaex123.cobblestone_generator.init.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import com.chinaex123.cobblestone_generator.block.entity.BaseGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
-import com.chinaex123.cobblestone_generator.init.ModCreativeTabs;
-import com.chinaex123.cobblestone_generator.init.ModItems;
+import com.chinaex123.cobblestone_generator.init.CGBlockEntities;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
+import com.chinaex123.cobblestone_generator.init.CGCreativeTabs;
+import com.chinaex123.cobblestone_generator.init.CGItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.Level;
@@ -27,11 +27,11 @@ public class CobblestoneGenerator {
     public CobblestoneGenerator(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::registerRedstoneTick);
 
-        ModCreativeTabs.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModItems.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, CobblestoneGeneratorConfig.SPEC);
+        CGCreativeTabs.register(modEventBus);
+        CGBlocks.register(modEventBus);
+        CGItems.register(modEventBus);
+        CGBlockEntities.register(modEventBus);
+        modContainer.registerConfig(ModConfig.Type.COMMON, CGServerConfig.SPEC);
         modEventBus.addListener(BaseGeneratorBlockEntity::registerCapabilities);
     }
 

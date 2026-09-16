@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.data;
 
-import com.chinaex123.cobblestone_generator.init.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -23,23 +23,23 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
      */
     @Override
     protected void generate() {
-        dropSelf(ModBlocks.STONE_COBBLEGEN.get());
-        dropSelf(ModBlocks.COPPER_COBBLEGEN.get());
-        dropSelf(ModBlocks.IRON_COBBLEGEN.get());
-        dropSelf(ModBlocks.GOLD_COBBLEGEN.get());
-        dropSelf(ModBlocks.DIAMOND_COBBLEGEN.get());
-        dropSelf(ModBlocks.EMERALD_COBBLEGEN.get());
-        dropSelf(ModBlocks.NETHERITE_COBBLEGEN.get());
-        dropSelf(ModBlocks.AMETHYST_COBBLEGEN.get());
-        dropSelf(ModBlocks.REDSTONE_COBBLEGEN.get());
-        dropSelf(ModBlocks.GLOWSTONE_COBBLEGEN.get());
-        dropSelf(ModBlocks.HAYBLOCK_COBBLEGEN.get());
-        dropSelf(ModBlocks.SCULK_COBBLEGEN.get());
+        dropSelf(CGBlocks.STONE_COBBLEGEN.get());
+        dropSelf(CGBlocks.COPPER_COBBLEGEN.get());
+        dropSelf(CGBlocks.IRON_COBBLEGEN.get());
+        dropSelf(CGBlocks.GOLD_COBBLEGEN.get());
+        dropSelf(CGBlocks.DIAMOND_COBBLEGEN.get());
+        dropSelf(CGBlocks.EMERALD_COBBLEGEN.get());
+        dropSelf(CGBlocks.NETHERITE_COBBLEGEN.get());
+        dropSelf(CGBlocks.AMETHYST_COBBLEGEN.get());
+        dropSelf(CGBlocks.REDSTONE_COBBLEGEN.get());
+        dropSelf(CGBlocks.GLOWSTONE_COBBLEGEN.get());
+        dropSelf(CGBlocks.HAYBLOCK_COBBLEGEN.get());
+        dropSelf(CGBlocks.SCULK_COBBLEGEN.get());
     }
 
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCK_REGISTER.getEntries().stream().map(Holder::value)::iterator;
+        return CGBlocks.BLOCK_REGISTER.getEntries().stream().map(Holder::value)::iterator;
     }
 }
