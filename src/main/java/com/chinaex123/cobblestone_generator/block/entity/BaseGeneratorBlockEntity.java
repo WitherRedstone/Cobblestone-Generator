@@ -19,6 +19,13 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 圆石生成器方块实体基类。
+ * <p>
+ * 负责圆石的定时生成、9 槽位内部存储、自动输出到相邻容器、
+ * 数据持久化、网络同步以及物品处理能力注册。
+ * 具体生成速度与产出由等级和配置决定。
+ */
 public abstract class BaseGeneratorBlockEntity extends BlockEntity {
     protected final CobblestoneGeneratorTier tier;
     protected int generateTimer = 0;
@@ -26,15 +33,13 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 物品处理器，用于管理方块实体内部的物品存储。
-     * 该处理器包含9个槽位，每个槽位的行为被重写以满足特定需求。
      * <p>
-     * onContentsChanged: 当槽位内容发生变化时调用，标记方块实体为脏状态以触发保存。
-     * isItemValid: 禁止外部向槽位插入物品，始终返回false。
-     * insertItem: 禁止外部向槽位插入物品，始终返回传入的物品栈。
+     * 该处理器包含9个槽位，每个槽位的行为被重写以满足特定需求。
      */
     protected final ItemStackHandler itemHandler = new ItemStackHandler(9) {
         /**
          * 当物品处理器中的槽位内容发生变化时调用此方法。
+         * <p>
          * 该方法会标记当前方块实体为脏状态，以便在适当的时候进行数据保存。
          *
          * @param slot 发生变化的槽位索引
@@ -46,6 +51,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
         /**
          * 检查指定槽位是否可以接受给定的物品栈。
+         * <p>
          * 此实现始终返回false，表示不允许任何物品插入到槽位中。
          *
          * @param slot 要检查的槽位索引
@@ -59,6 +65,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
         /**
          * 尝试将物品栈插入到指定槽位中。
+         * <p>
          * 此实现始终返回传入的物品栈，表示不允许任何物品插入。
          *
          * @param slot 目标槽位索引
@@ -75,6 +82,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 构造函数，初始化基础生成器方块实体。
+     * <p>
      * 通过父类构造函数设置方块实体的基本信息，并获取当前方块的生成器等级。
      *
      * @param type 方块实体的类型
@@ -88,6 +96,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 从NBT数据中加载方块实体的额外状态信息。
+     * <p>
      * 此方法负责恢复生成计时器、最后处理的槽位索引以及物品处理器的库存数据。
      *
      * @param nbt 包含序列化数据的NBT标签
@@ -103,6 +112,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 将方块实体的额外状态信息保存到NBT数据中。
+     * <p>
      * 此方法负责序列化生成计时器、最后处理的槽位索引以及物品处理器的库存数据。
      *
      * @param nbt 用于存储序列化数据的NBT标签
@@ -118,6 +128,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 标记方块实体为脏状态，并触发网络同步。
+     * <p>
      * 此方法在方块实体状态发生变化时调用，确保客户端和服务端数据一致。
      */
     @Override
@@ -128,6 +139,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 处理基础的圆石生成逻辑。
+     * <p>
      * 该方法负责计时、应用配置的速度倍数、检查存储空间并生成圆石。
      * 生成的圆石会被放入物品处理器的槽位中，并更新处理状态。
      */
@@ -136,7 +148,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         generateTimer++;
 
         // 应用速度倍数配置
-        double speedMultiplier = CobblestoneGeneratorConfig.getSpeedMultiplier();
+        double speedMultiplier = CobblestoneGeneratorConfig.SPEED_MULTIPLIER.get();
         // 计算实际的生成间隔tick数（至少为1）
         int effectiveGenerationTicks = (int) Math.max(1, tier.getGenerationTicks() / speedMultiplier);
 
@@ -203,12 +215,13 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 处理物品的自动输出逻辑。
+     * <p>
      * 该方法将当前方块实体中存储的圆石转移到相邻方块的物品处理器中。
      * 输出方向由配置决定，支持批量转移和槽位轮询机制。
      */
     protected void handleItemOutput() {
         // 获取配置的输出方向
-        Direction outputDirection = CobblestoneGeneratorConfig.getOutputDirection();
+        Direction outputDirection = CobblestoneGeneratorConfig.OUTPUT_DIRECTION.get();
         // 计算目标方块的位置
         BlockPos targetPos = worldPosition.relative(outputDirection);
 
@@ -281,6 +294,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
     /**
      * 注册方块实体的能力，使其支持物品处理功能。
+     * <p>
      * 该方法为普通生成器和特殊生成器分别注册物品处理器能力，
      * 限制只有非上方的面才能访问物品处理器。
      *

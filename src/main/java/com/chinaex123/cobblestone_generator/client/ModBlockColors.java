@@ -9,11 +9,17 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
+/**
+ * 方块颜色处理器。
+ * 为所有圆石生成器方块的水纹理部分注册基于生物群系的水颜色。
+ */
 @EventBusSubscriber(modid = CobblestoneGenerator.MOD_ID, value = Dist.CLIENT)
 public class ModBlockColors {
 
     /**
-     * 注册方块颜色处理器，为圆石生成器方块提供基于生物群系的水颜色渲染。
+     * 注册方块颜色处理器，
+     * <p>
+     * 为圆石生成器方块提供基于生物群系的水颜色渲染。
      * 该方法在颜色处理器注册事件中被调用，为所有生成器方块设置水纹理的颜色处理逻辑。
      *
      * @param event 方块颜色处理器注册事件对象

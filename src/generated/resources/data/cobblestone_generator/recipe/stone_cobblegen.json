@@ -9,10 +9,10 @@
       "item": "minecraft:stone"
     },
     "C": {
-      "item": "minecraft:water_bucket"
+      "tag": "c:buckets/water"
     },
     "D": {
-      "item": "minecraft:lava_bucket"
+      "tag": "c:buckets/lava"
     }
   },
   "pattern": [

@@ -26,8 +26,16 @@ import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 圆石生成器方块。
+ * <p>
+ * 承载普通/特殊生成器的方块状态、红石信号输出、交互提取与方块实体 tick 分发。
+ */
 public class CobblestoneGeneratorBlock extends BaseEntityBlock {
+
+    /** 红石信号强度属性 */
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
+    /** 圆石生成器的等级类型 */
     private final CobblestoneGeneratorTier tier;
 
     /**
@@ -41,6 +49,7 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
 
     /**
      * 定义方块的状态属性。
+     * <p>
      * 添加红石信号强度属性到方块状态定义中。
      *
      * @param builder 方块状态定义构建器
@@ -74,7 +83,6 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
      */
     @Override
     public int getSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
-        // 返回红石信号强度
         return blockState.getValue(POWER);
     }
 
@@ -124,6 +132,7 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
 
     /**
      * 处理玩家无物品交互圆石生成器方块的逻辑。
+     * <p>
      * 玩家右键点击方块时，从生成器中提取圆石到玩家背包或掉落。
      *
      * @param state 当前方块状态
@@ -168,6 +177,7 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
 
     /**
      * 获取方块实体的ticker回调函数，用于服务端的周期性更新。
+     * <p>
      * 根据生成器的等级类型决定使用特殊生成器还是普通生成器的tick方法。
      *
      * @param level 当前世界对象，用于判断是否为客户端

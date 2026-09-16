@@ -4,9 +4,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * 网络同步辅助类。
+ * <p>
+ * 提供服务端向客户端同步方块实体更新的工具方法。
+ */
 public class NetworkHelper {
+
     /**
-     * 简单的网络同步方法
      * 通知客户端方块状态已改变
      */
     public static void syncBlockEntity(Level level, BlockPos pos, BlockState state) {

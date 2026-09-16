@@ -1,11 +1,9 @@
-package com.chinaex123.cobblestone_generator.dataGen;
+package com.chinaex123.cobblestone_generator.data;
 
-import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
 import com.chinaex123.cobblestone_generator.init.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
@@ -22,21 +20,19 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
 
         // 石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.STONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STONE_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("CAD")
                 .pattern("BBB")
                 .define('A', Items.COBBLESTONE)
                 .define('B', Items.STONE)
-                .define('C', Items.WATER_BUCKET)
-                .define('D', Items.LAVA_BUCKET)
-                .unlockedBy("has_stone_cobblegen_water", has(Items.WATER_BUCKET))
-                .unlockedBy("has_stone_cobblegen_lava", has(Items.LAVA_BUCKET))
+                .define('C', Tags.Items.BUCKETS_WATER)
+                .define('D', Tags.Items.BUCKETS_LAVA)
+                .unlockedBy("has_stone_cobblegen_water", has(Tags.Items.BUCKETS_WATER))
+                .unlockedBy("has_stone_cobblegen_lava", has(Tags.Items.BUCKETS_LAVA))
                 .save(recipeOutput);
         // 铜原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.COPPER_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COPPER_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -45,8 +41,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_copper_cobblegen", has(ModBlocks.STONE_COBBLEGEN))
                 .save(recipeOutput);
         // 铁原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.IRON_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.IRON_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -55,8 +50,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_iron_cobblegen", has(ModBlocks.IRON_COBBLEGEN))
                 .save(recipeOutput);
         // 金原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.GOLD_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GOLD_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -65,8 +59,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_gold_cobblegen", has(ModBlocks.GOLD_COBBLEGEN))
                 .save(recipeOutput);
         // 钻石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.DIAMOND_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.DIAMOND_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -75,8 +68,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_diamond_cobblegen", has(ModBlocks.DIAMOND_COBBLEGEN))
                 .save(recipeOutput);
         // 绿宝石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.EMERALD_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EMERALD_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -88,15 +80,14 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(ModBlocks.EMERALD_COBBLEGEN.get()),
-                        Ingredient.of(Items.NETHERITE_INGOT),
+                        Ingredient.of(Tags.Items.INGOTS_NETHERITE),
                         RecipeCategory.MISC, ModBlocks.NETHERITE_COBBLEGEN.get().asItem()
                 )
                 .unlocks("has_netherite_cobblegen", has(ModBlocks.NETHERITE_COBBLEGEN.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(CobblestoneGenerator.MOD_ID, "netherite_cobblegen"));
+                .save(recipeOutput, ModBlocks.NETHERITE_COBBLEGEN.getId());
 
         // 紫水晶原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.AMETHYST_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.AMETHYST_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
@@ -106,8 +97,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_amethyst_cobblegen", has(ModBlocks.AMETHYST_COBBLEGEN))
                 .save(recipeOutput);
         // 红石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.REDSTONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.REDSTONE_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
@@ -117,8 +107,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_redstone_cobblegen", has(ModBlocks.REDSTONE_COBBLEGEN))
                 .save(recipeOutput);
         // 荧石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.GLOWSTONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GLOWSTONE_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
@@ -128,8 +117,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_glowstone_cobblegen", has(ModBlocks.GLOWSTONE_COBBLEGEN))
                 .save(recipeOutput);
         // 干草块原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.HAYBLOCK_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.HAYBLOCK_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -138,8 +126,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_hayblock_cobblegen", has(ModBlocks.HAYBLOCK_COBBLEGEN))
                 .save(recipeOutput);
         // 幽匿原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-                        ModBlocks.SCULK_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SCULK_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
