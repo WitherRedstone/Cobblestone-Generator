@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.data;
 
-import com.chinaex123.cobblestone_generator.init.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -20,7 +20,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
 
         // 石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.STONE_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("CAD")
                 .pattern("BBB")
@@ -32,108 +32,108 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                 .unlockedBy("has_stone_cobblegen_lava", has(Tags.Items.BUCKETS_LAVA))
                 .save(recipeOutput);
         // 铜原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COPPER_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.COPPER_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.STONE_COBBLEGEN)
+                .define('A', CGBlocks.STONE_COBBLEGEN)
                 .define('B', Tags.Items.INGOTS_COPPER)
-                .unlockedBy("has_copper_cobblegen", has(ModBlocks.STONE_COBBLEGEN))
+                .unlockedBy("has_copper_cobblegen", has(CGBlocks.STONE_COBBLEGEN))
                 .save(recipeOutput);
         // 铁原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.IRON_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.IRON_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.COPPER_COBBLEGEN)
+                .define('A', CGBlocks.COPPER_COBBLEGEN)
                 .define('B', Tags.Items.INGOTS_IRON)
-                .unlockedBy("has_iron_cobblegen", has(ModBlocks.IRON_COBBLEGEN))
+                .unlockedBy("has_iron_cobblegen", has(CGBlocks.IRON_COBBLEGEN))
                 .save(recipeOutput);
         // 金原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GOLD_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.GOLD_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.IRON_COBBLEGEN)
+                .define('A', CGBlocks.IRON_COBBLEGEN)
                 .define('B', Tags.Items.INGOTS_GOLD)
-                .unlockedBy("has_gold_cobblegen", has(ModBlocks.GOLD_COBBLEGEN))
+                .unlockedBy("has_gold_cobblegen", has(CGBlocks.GOLD_COBBLEGEN))
                 .save(recipeOutput);
         // 钻石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.DIAMOND_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.DIAMOND_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('A', CGBlocks.GOLD_COBBLEGEN)
                 .define('B', Tags.Items.GEMS_DIAMOND)
-                .unlockedBy("has_diamond_cobblegen", has(ModBlocks.DIAMOND_COBBLEGEN))
+                .unlockedBy("has_diamond_cobblegen", has(CGBlocks.DIAMOND_COBBLEGEN))
                 .save(recipeOutput);
         // 绿宝石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EMERALD_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.EMERALD_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.DIAMOND_COBBLEGEN)
+                .define('A', CGBlocks.DIAMOND_COBBLEGEN)
                 .define('B', Tags.Items.GEMS_EMERALD)
-                .unlockedBy("has_emerald_cobblegen", has(ModBlocks.EMERALD_COBBLEGEN))
+                .unlockedBy("has_emerald_cobblegen", has(CGBlocks.EMERALD_COBBLEGEN))
                 .save(recipeOutput);
         // 下界合金原石刷石机
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(ModBlocks.EMERALD_COBBLEGEN.get()),
+                        Ingredient.of(CGBlocks.EMERALD_COBBLEGEN.get()),
                         Ingredient.of(Tags.Items.INGOTS_NETHERITE),
-                        RecipeCategory.MISC, ModBlocks.NETHERITE_COBBLEGEN.get().asItem()
+                        RecipeCategory.MISC, CGBlocks.NETHERITE_COBBLEGEN.get().asItem()
                 )
-                .unlocks("has_netherite_cobblegen", has(ModBlocks.NETHERITE_COBBLEGEN.get()))
-                .save(recipeOutput, ModBlocks.NETHERITE_COBBLEGEN.getId());
+                .unlocks("has_netherite_cobblegen", has(CGBlocks.NETHERITE_COBBLEGEN.get()))
+                .save(recipeOutput, CGBlocks.NETHERITE_COBBLEGEN.getId());
 
         // 紫水晶原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.AMETHYST_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.AMETHYST_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
-                .define('A', ModBlocks.EMERALD_COBBLEGEN)
+                .define('A', CGBlocks.EMERALD_COBBLEGEN)
                 .define('B', Tags.Items.GEMS_AMETHYST)
                 .define('C', Items.AMETHYST_BLOCK)
-                .unlockedBy("has_amethyst_cobblegen", has(ModBlocks.AMETHYST_COBBLEGEN))
+                .unlockedBy("has_amethyst_cobblegen", has(CGBlocks.AMETHYST_COBBLEGEN))
                 .save(recipeOutput);
         // 红石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.REDSTONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.REDSTONE_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
-                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('A', CGBlocks.GOLD_COBBLEGEN)
                 .define('B', Tags.Items.DUSTS_REDSTONE)
                 .define('C', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                .unlockedBy("has_redstone_cobblegen", has(ModBlocks.REDSTONE_COBBLEGEN))
+                .unlockedBy("has_redstone_cobblegen", has(CGBlocks.REDSTONE_COBBLEGEN))
                 .save(recipeOutput);
         // 荧石原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GLOWSTONE_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.GLOWSTONE_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
-                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('A', CGBlocks.GOLD_COBBLEGEN)
                 .define('B', Tags.Items.DUSTS_GLOWSTONE)
                 .define('C', Items.GLOWSTONE)
-                .unlockedBy("has_glowstone_cobblegen", has(ModBlocks.GLOWSTONE_COBBLEGEN))
+                .unlockedBy("has_glowstone_cobblegen", has(CGBlocks.GLOWSTONE_COBBLEGEN))
                 .save(recipeOutput);
         // 干草块原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.HAYBLOCK_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.HAYBLOCK_COBBLEGEN.get())
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
-                .define('A', ModBlocks.GOLD_COBBLEGEN)
+                .define('A', CGBlocks.GOLD_COBBLEGEN)
                 .define('B', Items.HAY_BLOCK)
-                .unlockedBy("has_hayblock_cobblegen", has(ModBlocks.HAYBLOCK_COBBLEGEN))
+                .unlockedBy("has_hayblock_cobblegen", has(CGBlocks.HAYBLOCK_COBBLEGEN))
                 .save(recipeOutput);
         // 幽匿原石刷石机
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SCULK_COBBLEGEN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CGBlocks.SCULK_COBBLEGEN.get())
                 .pattern("CBC")
                 .pattern("BAB")
                 .pattern("CBC")
-                .define('A', ModBlocks.DIAMOND_COBBLEGEN)
+                .define('A', CGBlocks.DIAMOND_COBBLEGEN)
                 .define('B', Items.ECHO_SHARD)
                 .define('C', Items.SCULK)
-                .unlockedBy("has_sculk_cobblegen", has(ModBlocks.SCULK_COBBLEGEN))
+                .unlockedBy("has_sculk_cobblegen", has(CGBlocks.SCULK_COBBLEGEN))
                 .save(recipeOutput);
     }
 }

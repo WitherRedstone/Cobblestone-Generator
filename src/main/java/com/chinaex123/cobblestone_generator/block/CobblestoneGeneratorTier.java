@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.block;
 
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 
 /**
  * 圆石生成器等级枚举。
@@ -55,11 +55,11 @@ public enum CobblestoneGeneratorTier {
 
     /** 获取实际产出数量 */
     public int getOutputCount() {
-        return CobblestoneGeneratorConfig.getOutputCount(this);
+        return CGServerConfig.getOutputCount(this);
     }
 
     /** 获取实际产出间隔 */
     public int getGenerationTicks() {
-        return CobblestoneGeneratorConfig.getGenerationTicks(this);
+        return CGServerConfig.getGenerationTicks(this);
     }
 }

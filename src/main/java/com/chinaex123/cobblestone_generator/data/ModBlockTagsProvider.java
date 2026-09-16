@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.data;
 
 import com.chinaex123.cobblestone_generator.CobblestoneGenerator;
-import com.chinaex123.cobblestone_generator.init.ModBlocks;
+import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -35,32 +35,32 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         // 为添加到可被斧头挖掘标签中
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.STONE_COBBLEGEN.get())
-                .add(ModBlocks.COPPER_COBBLEGEN.get())
-                .add(ModBlocks.IRON_COBBLEGEN.get())
-                .add(ModBlocks.GOLD_COBBLEGEN.get())
-                .add(ModBlocks.DIAMOND_COBBLEGEN.get())
-                .add(ModBlocks.EMERALD_COBBLEGEN.get())
-                .add(ModBlocks.NETHERITE_COBBLEGEN.get())
-                .add(ModBlocks.AMETHYST_COBBLEGEN.get())
-                .add(ModBlocks.REDSTONE_COBBLEGEN.get())
-                .add(ModBlocks.GLOWSTONE_COBBLEGEN.get())
-                .add(ModBlocks.HAYBLOCK_COBBLEGEN.get())
-                .add(ModBlocks.SCULK_COBBLEGEN.get());
+                .add(CGBlocks.STONE_COBBLEGEN.get())
+                .add(CGBlocks.COPPER_COBBLEGEN.get())
+                .add(CGBlocks.IRON_COBBLEGEN.get())
+                .add(CGBlocks.GOLD_COBBLEGEN.get())
+                .add(CGBlocks.DIAMOND_COBBLEGEN.get())
+                .add(CGBlocks.EMERALD_COBBLEGEN.get())
+                .add(CGBlocks.NETHERITE_COBBLEGEN.get())
+                .add(CGBlocks.AMETHYST_COBBLEGEN.get())
+                .add(CGBlocks.REDSTONE_COBBLEGEN.get())
+                .add(CGBlocks.GLOWSTONE_COBBLEGEN.get())
+                .add(CGBlocks.HAYBLOCK_COBBLEGEN.get())
+                .add(CGBlocks.SCULK_COBBLEGEN.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.COPPER_COBBLEGEN.get());
+                .add(CGBlocks.COPPER_COBBLEGEN.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.IRON_COBBLEGEN.get())
-                .add(ModBlocks.GOLD_COBBLEGEN.get())
-                .add(ModBlocks.AMETHYST_COBBLEGEN.get())
-                .add(ModBlocks.REDSTONE_COBBLEGEN.get())
-                .add(ModBlocks.GLOWSTONE_COBBLEGEN.get())
-                .add(ModBlocks.HAYBLOCK_COBBLEGEN.get())
-                .add(ModBlocks.SCULK_COBBLEGEN.get());
+                .add(CGBlocks.IRON_COBBLEGEN.get())
+                .add(CGBlocks.GOLD_COBBLEGEN.get())
+                .add(CGBlocks.AMETHYST_COBBLEGEN.get())
+                .add(CGBlocks.REDSTONE_COBBLEGEN.get())
+                .add(CGBlocks.GLOWSTONE_COBBLEGEN.get())
+                .add(CGBlocks.HAYBLOCK_COBBLEGEN.get())
+                .add(CGBlocks.SCULK_COBBLEGEN.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.DIAMOND_COBBLEGEN.get())
-                .add(ModBlocks.EMERALD_COBBLEGEN.get())
-                .add(ModBlocks.NETHERITE_COBBLEGEN.get());
+                .add(CGBlocks.DIAMOND_COBBLEGEN.get())
+                .add(CGBlocks.EMERALD_COBBLEGEN.get())
+                .add(CGBlocks.NETHERITE_COBBLEGEN.get());
     }
 }

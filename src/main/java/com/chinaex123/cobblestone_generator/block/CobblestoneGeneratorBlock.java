@@ -1,7 +1,7 @@
 package com.chinaex123.cobblestone_generator.block;
 
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.init.CGBlockEntities;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -196,9 +196,9 @@ public class CobblestoneGeneratorBlock extends BaseEntityBlock {
         // 使用switch表达式根据生成器等级判断ticker类型
         return switch (this.getTier()) {
             case REDSTONE, AMETHYST, GLOWSTONE, HAYBLOCK, SCULK ->
-                    createTickerHelper(blockEntityType, ModBlockEntities.SPECIAL_GENERATOR.get(), SpecialGeneratorBlockEntity::tick);
+                    createTickerHelper(blockEntityType, CGBlockEntities.SPECIAL_GENERATOR.get(), SpecialGeneratorBlockEntity::tick);
             default ->
-                    createTickerHelper(blockEntityType, ModBlockEntities.COBBLE_GENERATOR.get(), NormalGeneratorBlockEntity::tick);
+                    createTickerHelper(blockEntityType, CGBlockEntities.COBBLE_GENERATOR.get(), NormalGeneratorBlockEntity::tick);
         };
     }
 }

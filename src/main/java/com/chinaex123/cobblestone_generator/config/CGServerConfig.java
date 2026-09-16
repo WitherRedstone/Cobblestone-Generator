@@ -4,10 +4,9 @@ import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class CobblestoneGeneratorConfig {
+public class CGServerConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     // 全局配置

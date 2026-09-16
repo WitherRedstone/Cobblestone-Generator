@@ -20,7 +20,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ModBlocks {
+public class CGBlocks {
     // 创建方块注册器实例
     public static final DeferredRegister.Blocks BLOCK_REGISTER =
             DeferredRegister.createBlocks(CobblestoneGenerator.MOD_ID);
@@ -168,7 +168,7 @@ public class ModBlocks {
      * 为指定方块注册对应的物品形式
      */
     private static <T extends Block> void registerBlockItems(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS_REGISTER.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        CGItems.ITEMS_REGISTER.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     /**

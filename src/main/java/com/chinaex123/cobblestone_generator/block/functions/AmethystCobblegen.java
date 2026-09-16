@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.block.functions;
 
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -42,7 +42,7 @@ public class AmethystCobblegen {
 
                     // 检查是否为紫水晶母岩
                     if (checkState.is(Blocks.BUDDING_AMETHYST)) {
-                        double speedMultiplier = CobblestoneGeneratorConfig.AMETHYST_GROWTH_SPEED_MULTIPLIER.get();
+                        double speedMultiplier = CGServerConfig.AMETHYST_GROWTH_SPEED_MULTIPLIER.get();
                         double triggerChance = 0.05 * speedMultiplier; // 降低概率因为检测范围更大
 
                         if (level.random.nextDouble() < triggerChance) {

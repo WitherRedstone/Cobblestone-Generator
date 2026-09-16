@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.block.functions;
 
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -42,9 +42,9 @@ public class SculkCobblegen {
         }
 
         // 获取配置
-        List<String> targetBlocks = CobblestoneGeneratorConfig.getSculkTargetBlocks();
-        int radius = CobblestoneGeneratorConfig.SCULK_CONVERSION_RADIUS.get();
-        int chance = CobblestoneGeneratorConfig.SCULK_CONVERSION_CHANCE.get();
+        List<String> targetBlocks = CGServerConfig.getSculkTargetBlocks();
+        int radius = CGServerConfig.SCULK_CONVERSION_RADIUS.get();
+        int chance = CGServerConfig.SCULK_CONVERSION_CHANCE.get();
 
         // 使用正确的随机数生成器类型
         RandomSource random = serverLevel.random;
