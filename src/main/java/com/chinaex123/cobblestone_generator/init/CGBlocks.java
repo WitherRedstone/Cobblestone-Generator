@@ -19,7 +19,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class ModBlocks {
+public class CGBlocks {
     // 创建方块注册器实例
     public static final DeferredRegister.Blocks BLOCK_REGISTER =
             DeferredRegister.createBlocks(CobblestoneGenerator.MOD_ID);
@@ -171,7 +171,7 @@ public class ModBlocks {
                                                                     Function<BlockBehaviour.Properties, T> func,
                                                                     Supplier<BlockBehaviour.Properties> properties) {
         DeferredBlock<T> block = BLOCK_REGISTER.registerBlock(name, func, properties);
-        ModItems.ITEMS_REGISTER.registerSimpleBlockItem(name, block);
+        CGItems.ITEMS_REGISTER.registerSimpleBlockItem(name, block);
         return block;
     }
 

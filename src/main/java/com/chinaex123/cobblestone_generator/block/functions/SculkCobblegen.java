@@ -15,6 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
+/**
+ * 幽匿圆石生成器的特殊功能。
+ * <p>
+ * 定期将周围配置范围内的目标方块按概率转换为幽匿块，支持标签与方块ID匹配。
+ */
 public class SculkCobblegen {
 
     /**
@@ -37,8 +42,8 @@ public class SculkCobblegen {
 
         // 获取配置
         List<String> targetBlocks = CobblestoneGeneratorConfig.getSculkTargetBlocks();
-        int radius = CobblestoneGeneratorConfig.getSculkConversionRadius();
-        int chance = CobblestoneGeneratorConfig.getSculkConversionChance();
+        int radius = CobblestoneGeneratorConfig.SCULK_CONVERSION_RADIUS.get();
+        int chance = CobblestoneGeneratorConfig.SCULK_CONVERSION_CHANCE.get();
 
         // 随机数生成器类型
         RandomSource random = serverLevel.getRandom();
@@ -69,6 +74,7 @@ public class SculkCobblegen {
 
     /**
      * 检查指定方块是否为目标方块列表中的成员。
+     * <p>
      * 支持两种格式的目标方块定义：方块标签（以#开头）和具体方块ID。
      *
      * @param level 当前服务器世界对象，用于访问注册表等信息
@@ -81,7 +87,7 @@ public class SculkCobblegen {
 
         // 遍历所有目标方块定义
         for (String target : targetBlocks) {
-            // 处理tag格式 (#tag_name)
+            // 处理tag格式
             if (target.startsWith("#")) {
                 String tagName = target.substring(1);
                 Identifier tagLocation = Identifier.tryParse(tagName);
@@ -92,7 +98,7 @@ public class SculkCobblegen {
                     }
                 }
             }
-            // 处理方块ID格式 (namespace:path)
+            // 处理方块ID格式
             else {
                 Identifier blockLocation = Identifier.tryParse(target);
                 if (blockLocation != null) {

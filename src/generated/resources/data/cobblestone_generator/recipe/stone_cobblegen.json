@@ -3,8 +3,8 @@
   "key": {
     "A": "minecraft:cobblestone",
     "B": "minecraft:stone",
-    "C": "minecraft:water_bucket",
-    "D": "minecraft:lava_bucket"
+    "C": "#c:buckets/water",
+    "D": "#c:buckets/lava"
   },
   "pattern": [
     "BBB",

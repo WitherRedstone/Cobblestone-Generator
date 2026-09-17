@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class ModBlockEntities {
+public class CGBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, CobblestoneGenerator.MOD_ID);
 
@@ -19,23 +19,23 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<@NotNull NormalGeneratorBlockEntity>> COBBLE_GENERATOR =
             BLOCK_ENTITIES.register("cobble_generator",
                     () -> new BlockEntityType<>(NormalGeneratorBlockEntity::new,
-                            ModBlocks.STONE_COBBLEGEN.get(),
-                            ModBlocks.COPPER_COBBLEGEN.get(),
-                            ModBlocks.IRON_COBBLEGEN.get(),
-                            ModBlocks.GOLD_COBBLEGEN.get(),
-                            ModBlocks.DIAMOND_COBBLEGEN.get(),
-                            ModBlocks.EMERALD_COBBLEGEN.get(),
-                            ModBlocks.NETHERITE_COBBLEGEN.get()));
+                            CGBlocks.STONE_COBBLEGEN.get(),
+                            CGBlocks.COPPER_COBBLEGEN.get(),
+                            CGBlocks.IRON_COBBLEGEN.get(),
+                            CGBlocks.GOLD_COBBLEGEN.get(),
+                            CGBlocks.DIAMOND_COBBLEGEN.get(),
+                            CGBlocks.EMERALD_COBBLEGEN.get(),
+                            CGBlocks.NETHERITE_COBBLEGEN.get()));
 
     // 特殊生成器方块实体
     public static final Supplier<BlockEntityType<@NotNull SpecialGeneratorBlockEntity>> SPECIAL_GENERATOR =
             BLOCK_ENTITIES.register("special_generator",
                     () -> new BlockEntityType<>(SpecialGeneratorBlockEntity::new,
-                            ModBlocks.REDSTONE_COBBLEGEN.get(),
-                            ModBlocks.AMETHYST_COBBLEGEN.get(),
-                            ModBlocks.GLOWSTONE_COBBLEGEN.get(),
-                            ModBlocks.HAYBLOCK_COBBLEGEN.get(),
-                            ModBlocks.SCULK_COBBLEGEN.get()));
+                            CGBlocks.REDSTONE_COBBLEGEN.get(),
+                            CGBlocks.AMETHYST_COBBLEGEN.get(),
+                            CGBlocks.GLOWSTONE_COBBLEGEN.get(),
+                            CGBlocks.HAYBLOCK_COBBLEGEN.get(),
+                            CGBlocks.SCULK_COBBLEGEN.get()));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
