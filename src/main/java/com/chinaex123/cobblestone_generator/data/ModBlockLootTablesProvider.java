@@ -1,4 +1,4 @@
-package com.chinaex123.cobblestone_generator.dataGen;
+package com.chinaex123.cobblestone_generator.data;
 
 import com.chinaex123.cobblestone_generator.init.CGBlocks;
 import net.minecraft.core.Holder;
