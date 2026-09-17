@@ -2,8 +2,8 @@ package com.chinaex123.cobblestone_generator.block.entity;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
-import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
+import com.chinaex123.cobblestone_generator.init.CGBlockEntities;
 import com.chinaex123.cobblestone_generator.network.NetworkHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,22 +25,41 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
+/**
+ * 圆石生成器方块实体基类。
+ * <p>
+ * 负责圆石的定时生成、9 槽位内部存储、自动输出到相邻容器、
+ * 数据持久化、网络同步以及物品处理能力注册。
+ * 具体生成速度与产出由等级和配置决定。
+ */
 public abstract class BaseGeneratorBlockEntity extends BlockEntity {
+    /** 该生成器的等级，决定生成速度和产出数量 */
     protected final CobblestoneGeneratorTier tier;
+    /** 生成计时器，累计到有效生成间隔后触发一次产出 */
     protected int generateTimer = 0;
+    /** 上次处理过的槽位索引，用于轮询分配产出与输出 */
     protected int lastProcessedSlot = 0;
-    
+    /** 内部存储槽位总数 */
     private static final int TOTAL_SLOTS = 9;
 
+    /** 内部物品存储数组，共 9 个槽位 */
     public final ItemStack[] items = new ItemStack[TOTAL_SLOTS];
 
+    // 初始化所有槽位为空物品
     {
         for (int i = 0; i < TOTAL_SLOTS; i++) {
             items[i] = ItemStack.EMPTY;
         }
     }
 
+    /**
+     * 物品处理能力实现。
+     * <p>
+     * 对外暴露内部 9 个槽位，允许提取（不允许插入），
+     * 提取时需匹配物品与组件，并触发存档与同步。
+     */
     private final ResourceHandler<@NotNull ItemResource> itemHandler = new ResourceHandler<>() {
         @Override
         public int size() {
@@ -48,7 +67,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
 
         @Override
-        public ItemResource getResource(int index) {
+        public @NonNull ItemResource getResource(int index) {
             if (index >= 0 && index < TOTAL_SLOTS) {
                 ItemStack stack = items[index];
                 if (!stack.isEmpty()) {
@@ -72,11 +91,13 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
             return 64L;
         }
 
+        /** 禁止外部插入物品 */
         @Override
         public int insert(int index, ItemResource resource, int amount, @NotNull TransactionContext transaction) {
             return 0;
         }
 
+        /** 允许提取物品，提取后更新槽位并标记变更 */
         @Override
         public int extract(int index, ItemResource resource, int amount, @NotNull TransactionContext transaction) {
             if (index >= 0 && index < TOTAL_SLOTS) {
@@ -113,6 +134,11 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
     };
 
+    /**
+     * 能量处理能力实现。
+     * <p>
+     * 该生成器不涉及能量存储，所有方法均返回 0。
+     */
     private final EnergyHandler energyHandler = new EnergyHandler() {
         @Override
         public int insert(int maxReceive, @NotNull TransactionContext transaction) {
@@ -135,11 +161,23 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
     };
 
+    /**
+     * 构造方块实体。
+     *
+     * @param type  方块实体类型
+     * @param pos   方块位置
+     * @param state 方块状态，用于获取对应等级
+     */
     public BaseGeneratorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.tier = ((CobblestoneGeneratorBlock) state.getBlock()).getTier();
     }
 
+    /**
+     * 从存档加载数据。
+     * <p>
+     * 读取生成计时器、上次处理槽位以及 9 个槽位的物品数据。
+     */
     @Override
     protected void loadAdditional(ValueInput input) {
         super.loadAdditional(input);
@@ -163,6 +201,11 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
     }
 
+    /**
+     * 保存数据到存档。
+     * <p>
+     * 写入生成计时器、上次处理槽位以及 9 个槽位的物品数据。
+     */
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
@@ -181,16 +224,26 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         output.store("custom_data", CompoundTag.CODEC, customData);
     }
 
+    /**
+     * 标记方块实体已变更，并触发网络同步。
+     */
     @Override
     public void setChanged() {
         super.setChanged();
         NetworkHelper.syncBlockEntity(level, worldPosition, getBlockState());
     }
 
+    /**
+     * 处理基础的圆石生成逻辑。
+     * <p>
+     * 每 tick 递增计时器，达到有效生成间隔后尝试向内部槽位添加圆石。
+     * 生成速度受配置中的速度倍率影响，产出数量由等级决定。
+     * 采用轮询方式从上次处理的槽位开始寻找可存放的位置。
+     */
     protected void handleBasicGeneration() {
         generateTimer++;
 
-        double speedMultiplier = CobblestoneGeneratorConfig.getSpeedMultiplier();
+        double speedMultiplier = CGServerConfig.SPEED_MULTIPLIER.get();
         int effectiveGenerationTicks = (int) Math.max(1, tier.getGenerationTicks() / speedMultiplier);
 
         if (generateTimer >= effectiveGenerationTicks) {
@@ -199,6 +252,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
             int outputCount = Math.min(tier.getOutputCount(), 64);
             ItemStack cobblestone = new ItemStack(Items.COBBLESTONE, outputCount);
 
+            // 检查是否有空位或可堆叠的圆石槽位
             boolean hasSpace = false;
             for (int i = 0; i < 9; i++) {
                 ItemStack stack = items[i];
@@ -211,6 +265,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
             }
 
             if (hasSpace) {
+                // 从上次处理槽位开始轮询，找到第一个可存放的位置
                 for (int attempt = 0; attempt < 9; attempt++) {
                     int slotIndex = (lastProcessedSlot + attempt) % 9;
                     ItemStack stack = items[slotIndex];
@@ -233,8 +288,15 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
     }
 
+    /**
+     * 处理向相邻容器自动输出圆石的逻辑。
+     * <p>
+     * 根据配置的输出方向获取相邻方块的物品能力，
+     * 从上次处理槽位开始轮询，将圆石转移到目标容器中。
+     * 每次最多转移 64 个，转移成功后更新槽位并标记变更。
+     */
     protected void handleItemOutput() {
-        Direction outputDirection = CobblestoneGeneratorConfig.getOutputDirection();
+        Direction outputDirection = CGServerConfig.OUTPUT_DIRECTION.get();
         BlockPos targetPos = worldPosition.relative(outputDirection);
 
         BlockEntity targetBlockEntity = null;
@@ -245,6 +307,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         if (targetBlockEntity != null) {
             var handler = level.getCapability(Capabilities.Item.BLOCK, targetPos, outputDirection.getOpposite());
             if (handler != null) {
+                // 从上次处理槽位开始轮询，寻找可输出的圆石
                 for (int slotAttempt = 0; slotAttempt < 9; slotAttempt++) {
                     int sourceSlot = (lastProcessedSlot + slotAttempt) % 9;
                     ItemStack stack = items[sourceSlot];
@@ -255,6 +318,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
                         toTransfer.setCount(transferCount);
 
                         ItemStack remaining = toTransfer;
+                        // 遍历目标容器的所有槽位，尝试插入
                         for (int targetSlot = 0; targetSlot < handler.size() && !remaining.isEmpty(); targetSlot++) {
                             ItemResource targetResource = handler.getResource(targetSlot);
                             if (targetResource.isEmpty() ||
@@ -282,19 +346,38 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
         }
     }
 
+    /**
+     * 获取物品处理能力。
+     *
+     * @return 内部物品处理器
+     */
     public ResourceHandler<@NotNull ItemResource> getItemHandler() {
         return itemHandler;
     }
 
+    /**
+     * 获取能量处理能力。
+     *
+     * @param side 访问方向，忽略
+     * @return 能量处理器
+     */
     @Nullable
     public EnergyHandler getEnergyHandler(@Nullable Direction side) {
         return energyHandler;
     }
 
+    /**
+     * 注册方块实体的能力。
+     * <p>
+     * 为圆石生成器和特殊生成器注册物品处理能力，
+     * 除上方以外的所有方向均可访问。
+     *
+     * @param event 能力注册事件
+     */
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(
                 Capabilities.Item.BLOCK,
-                ModBlockEntities.COBBLE_GENERATOR.get(),
+                CGBlockEntities.COBBLE_GENERATOR.get(),
                 (be, side) -> {
                     if (side != Direction.UP) {
                         return be.getItemHandler();
@@ -305,7 +388,7 @@ public abstract class BaseGeneratorBlockEntity extends BlockEntity {
 
         event.registerBlockEntity(
                 Capabilities.Item.BLOCK,
-                ModBlockEntities.SPECIAL_GENERATOR.get(),
+                CGBlockEntities.SPECIAL_GENERATOR.get(),
                 (be, side) -> {
                     if (side != Direction.UP) {
                         return be.getItemHandler();

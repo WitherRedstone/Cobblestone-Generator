@@ -3,11 +3,16 @@ package com.chinaex123.cobblestone_generator.block.functions;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.entity.NormalGeneratorBlockEntity;
 import com.chinaex123.cobblestone_generator.block.entity.SpecialGeneratorBlockEntity;
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * 红石圆石生成器的特殊功能。
+ * <p>
+ * 按配置模式（持续/间隔）控制方块红石信号输出，并提供库存检测工具方法。
+ */
 public class RedstoneCobblegen {
 
     /**
@@ -22,8 +27,8 @@ public class RedstoneCobblegen {
     public static void handleRedstoneSignal(Level level, BlockPos pos, BlockState state, SpecialGeneratorBlockEntity blockEntity) {
         if (level.isClientSide()) return;
 
-        CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.getRedstoneSignalMode();
-        int signalInterval = CobblestoneGeneratorConfig.getRedstoneSignalInterval();
+        CGServerConfig.RedstoneSignalMode signalMode = CGServerConfig.REDSTONE_SIGNAL_MODE.get();
+        int signalInterval = CGServerConfig.REDSTONE_SIGNAL_INTERVAL.get();
 
         switch (signalMode) {
             case CONTINUOUS:
@@ -46,6 +51,7 @@ public class RedstoneCobblegen {
 
     /**
      * 只在信号不同时才更新，避免不必要的方块更新
+     *
      * @param level 世界对象
      * @param pos 方块位置
      * @param state 方块状态
@@ -60,6 +66,7 @@ public class RedstoneCobblegen {
 
     /**
      * 检查生成器内部是否有圆石库存
+     *
      * @param blockEntity 方块实体
      * @return 是否有圆石
      */

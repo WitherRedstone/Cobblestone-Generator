@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:lava_bucket"
+            "items": "#c:buckets/lava"
           }
         ]
       },
@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:water_bucket"
+            "items": "#c:buckets/water"
           }
         ]
       },

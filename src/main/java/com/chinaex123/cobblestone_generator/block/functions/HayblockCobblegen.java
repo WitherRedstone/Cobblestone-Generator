@@ -1,6 +1,6 @@
 package com.chinaex123.cobblestone_generator.block.functions;
 
-import com.chinaex123.cobblestone_generator.config.CobblestoneGeneratorConfig;
+import com.chinaex123.cobblestone_generator.config.CGServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -9,10 +9,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
+/**
+ * 干草捆圆石生成器的特殊功能。
+ * <p>
+ * 定期为配置范围内玩家提供生命恢复效果。
+ */
 public class HayblockCobblegen {
 
     /**
      * 处理干草捆圆石生成器的特殊功能
+     * <p>
      * 为周围指定范围内的玩家提供持续的生命恢复效果
      *
      * @param level 当前世界对象
@@ -30,7 +36,7 @@ public class HayblockCobblegen {
         }
 
         // 从配置获取治疗范围
-        double healRange = CobblestoneGeneratorConfig.getHayblockHealRange();
+        double healRange = CGServerConfig.HAYBLOCK_HEAL_RANGE.get();
 
         // 扩大一点检测范围确保覆盖
         double expandedRange = healRange + 1.0;
@@ -53,7 +59,7 @@ public class HayblockCobblegen {
             int deltaY = Math.abs(playerPos.getY() - generatorPos.getY());
             int deltaZ = Math.abs(playerPos.getZ() - generatorPos.getZ());
 
-            // 计算最大坐标差（Chebyshev距离）
+            // 计算最大坐标差
             double distance = Math.max(Math.max(deltaX, deltaY), deltaZ);
 
             // 检查玩家是否在治疗范围内
