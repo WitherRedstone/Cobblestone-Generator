@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:netherite_ingot",
+  "base": "cobblestone_generator:emerald_cobblegen",
+  "result": {
+    "id": "cobblestone_generator:netherite_cobblegen"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

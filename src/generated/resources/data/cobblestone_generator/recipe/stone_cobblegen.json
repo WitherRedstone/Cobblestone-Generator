@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:cobblestone",
+    "B": "minecraft:stone",
+    "C": "#c:buckets/water",
+    "D": "#c:buckets/lava"
+  },
+  "pattern": [
+    "BBB",
+    "CAD",
+    "BBB"
+  ],
+  "result": {
+    "id": "cobblestone_generator:stone_cobblegen"
+  }
+}

@@ -1,4 +1,4 @@
-package com.chinaex123.cobblestone_generator.tooltip;
+package com.chinaex123.cobblestone_generator.client.tooltip;
 
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorBlock;
 import com.chinaex123.cobblestone_generator.block.CobblestoneGeneratorTier;
@@ -31,9 +31,9 @@ public class ModTooltips {
             // 获取配置的数值
             int outputCount = CobblestoneGeneratorConfig.getOutputCount(tier);
             int generationTicks = CobblestoneGeneratorConfig.getGenerationTicks(tier);
-            double speedMultiplier = CobblestoneGeneratorConfig.getSpeedMultiplier();
+            double speedMultiplier = CobblestoneGeneratorConfig.SPEED_MULTIPLIER.get();
 
-            // 计算实际生成间隔（考虑速度倍数）
+            // 计算实际生成间隔（需要考虑速度倍数）
             int actualTicks = (int) Math.max(1, generationTicks / speedMultiplier);
 
             // 使用游戏内本地化获取圆石名称
@@ -60,13 +60,13 @@ public class ModTooltips {
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_description"));
 
                 // 显示红石信号模式
-                CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.getRedstoneSignalMode();
+                CobblestoneGeneratorConfig.RedstoneSignalMode signalMode = CobblestoneGeneratorConfig.REDSTONE_SIGNAL_MODE.get();
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_mode")
                         .append(": ").append(Component.translatable("redstone_signal_mode." + signalMode.name().toLowerCase())));
 
                 // 如果是INTERVAL模式，显示间隔tick
                 if (signalMode == CobblestoneGeneratorConfig.RedstoneSignalMode.INTERVAL) {
-                    int interval = CobblestoneGeneratorConfig.getRedstoneSignalInterval();
+                    int interval = CobblestoneGeneratorConfig.REDSTONE_SIGNAL_INTERVAL.get();
                     tooltip.add(Component.translatable("tooltip.cobblestone_generator.redstone_interval")
                             .append(": " + interval + " tick"));
                 }
@@ -78,7 +78,7 @@ public class ModTooltips {
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.amethyst_description"));
 
                 // 显示紫水晶加速倍数
-                double growthMultiplier = CobblestoneGeneratorConfig.getAmethystGrowthSpeedMultiplier();
+                double growthMultiplier = CobblestoneGeneratorConfig.AMETHYST_GROWTH_SPEED_MULTIPLIER.get();
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.amethyst_growth_boost")
                         .append(": " + String.format("%.1f", growthMultiplier) + "x"));
             }
@@ -101,13 +101,13 @@ public class ModTooltips {
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_description"));
 
                 // 显示转换范围
-                int radius = CobblestoneGeneratorConfig.getSculkConversionRadius();
+                int radius = CobblestoneGeneratorConfig.SCULK_CONVERSION_RADIUS.get();
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_radius")
                         .append(": " + radius + " ")
                         .append(Component.translatable("tooltip.cobblestone_generator.blocks")));
 
                 // 显示转换概率
-                int chance = CobblestoneGeneratorConfig.getSculkConversionChance();
+                int chance = CobblestoneGeneratorConfig.SCULK_CONVERSION_CHANCE.get();
                 tooltip.add(Component.translatable("tooltip.cobblestone_generator.sculk_chance")
                         .append(": " + chance + "%"));
             }

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "cobblestone_generator:diamond_cobblegen",
+    "B": "minecraft:echo_shard",
+    "C": "minecraft:sculk"
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CBC"
+  ],
+  "result": {
+    "id": "cobblestone_generator:sculk_cobblegen"
+  }
+}

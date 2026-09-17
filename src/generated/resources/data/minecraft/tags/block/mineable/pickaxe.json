@@ -1,0 +1,16 @@
+{
+  "values": [
+    "cobblestone_generator:stone_cobblegen",
+    "cobblestone_generator:copper_cobblegen",
+    "cobblestone_generator:iron_cobblegen",
+    "cobblestone_generator:gold_cobblegen",
+    "cobblestone_generator:diamond_cobblegen",
+    "cobblestone_generator:emerald_cobblegen",
+    "cobblestone_generator:netherite_cobblegen",
+    "cobblestone_generator:amethyst_cobblegen",
+    "cobblestone_generator:redstone_cobblegen",
+    "cobblestone_generator:glowstone_cobblegen",
+    "cobblestone_generator:hayblock_cobblegen",
+    "cobblestone_generator:sculk_cobblegen"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copper_cobblegen": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cobblestone_generator:stone_cobblegen"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cobblestone_generator:copper_cobblegen"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_copper_cobblegen"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cobblestone_generator:copper_cobblegen"
+    ]
+  }
+}

@@ -1,14 +1,20 @@
 package com.chinaex123.cobblestone_generator.block.entity;
 
-import com.chinaex123.cobblestone_generator.init.ModBlockEntities;
+import com.chinaex123.cobblestone_generator.init.CGBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * 普通圆石生成器方块实体。
+ * <p>
+ * 继承 BaseGeneratorBlockEntity，复用其生成、存储、输出、同步与能力注册逻辑，
+ * 仅绑定普通生成器类型，并在服务端 tick 中调用生成与输出方法。
+ */
 public class NormalGeneratorBlockEntity extends BaseGeneratorBlockEntity {
 
     public NormalGeneratorBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.COBBLE_GENERATOR.get(), pos, state);
+        super(CGBlockEntities.COBBLE_GENERATOR.get(), pos, state);
     }
 
     /**
